@@ -1,0 +1,41 @@
+html {
+  font-size: 62.5%; /* Sets up the Base 10 stuff for rem */
+  font-family: 'Open Sans', sans-serif;
+}
+
+header,
+main,
+footer {
+  padding-left: 0;
+  font-size: 1.6rem;
+
+  @include respond-above(md) {
+    padding-left: 300px;
+  }
+}
+
+header {
+  top: 0;
+  left: 0;
+  height: 5rem;
+  background-color: $header-bg-color;
+  box-shadow: 0 0 10px 0 #888;
+
+  & > a i.material-icons {
+    font-size: 4rem;
+    color: white;
+    padding: 1rem;
+  }
+
+  & > span {
+    font-size: 2rem;
+  }
+
+  @include respond-above(md) {
+    display: none !important;
+  }
+}
+
+main > div {
+  padding: 1.5rem;
+}
