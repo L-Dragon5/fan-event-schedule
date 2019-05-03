@@ -3,17 +3,17 @@ import ReactDOM from "react-dom";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 
 // Views
-import Home from "./views/Home";
-import Schedule from "./views/Schedule";
+import HomePage from "./views/HomePage";
+import SchedulePage from "./views/SchedulePage";
 
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: HomePage,
   },
   {
     path:'/schedule',
-    component: Schedule,
+    component: SchedulePage,
   }
 ];
 

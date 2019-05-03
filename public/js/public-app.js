@@ -55418,7 +55418,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60379,8 +60379,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Home */ "./resources/js/public/views/Home.js");
-/* harmony import */ var _views_Schedule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Schedule */ "./resources/js/public/views/Schedule.js");
+/* harmony import */ var _views_HomePage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/HomePage */ "./resources/js/public/views/HomePage.js");
+/* harmony import */ var _views_SchedulePage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/SchedulePage */ "./resources/js/public/views/SchedulePage.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60407,10 +60407,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var routes = [{
   path: '/',
-  component: _views_Home__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _views_HomePage__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
   path: '/schedule',
-  component: _views_Schedule__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _views_SchedulePage__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
 
 var PublicMain =
@@ -60484,10 +60484,10 @@ if (document.getElementById("public-root")) {
 
 /***/ }),
 
-/***/ "./resources/js/public/views/Home.js":
-/*!*******************************************!*\
-  !*** ./resources/js/public/views/Home.js ***!
-  \*******************************************/
+/***/ "./resources/js/public/components/Schedule.js":
+/*!****************************************************!*\
+  !*** ./resources/js/public/components/Schedule.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60505,9 +60505,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -60515,34 +60515,154 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Home =
+var Schedule =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Home, _Component);
+  _inherits(Schedule, _Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+  function Schedule(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
+    _classCallCheck(this, Schedule);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Schedule).call(this, props));
+    _this.state = {
+      items: [],
+      publicFacing: props.publicFacing
+    };
+    _this.addGridItem = _this.addGridItem.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  _createClass(Home, [{
+  _createClass(Schedule, [{
+    key: "updateLines",
+    value: function updateLines() {
+      var gridItemCount = document.querySelectorAll('.schedule__grid__item').length;
+      var newLineWidth = gridItemCount * 154;
+      var labelLines = document.querySelectorAll('.schedule__label__line');
+      labelLines.forEach(function (ele, index) {
+        ele.style.width = newLineWidth + 'px';
+      });
+    }
+  }, {
+    key: "addGridItem",
+    value: function addGridItem() {
+      var roomName = prompt("Enter event name: ");
+      this.state.items.push(roomName);
+      this.forceUpdate();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var dataFromAjax = ['Event Room 1', 'Event Room 2', 'Event Room 3', 'Event Room 4'];
+      this.setState({
+        items: this.state.items.concat(dataFromAjax)
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.updateLines();
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome to the home page of the public-facing side of the application."));
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, function () {
+        if (_this2.state.publicFacing == false) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "schedule__grid__add-item",
+            onClick: _this2.addGridItem
+          }, "Add New Room");
+        }
+      }(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__labels"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "10AM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "11AM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "12PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "1PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "2PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "3PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "4PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "5PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "6PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "7PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "8PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "9PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "10PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__label"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "11PM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "schedule__label__line"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__grid"
+      }, this.state.items.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "schedule__grid__item",
+          key: item
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "schedule__grid__item__header"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item)));
+      })))));
     }
   }]);
 
-  return Home;
+  return Schedule;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+/* harmony default export */ __webpack_exports__["default"] = (Schedule);
 
 /***/ }),
 
-/***/ "./resources/js/public/views/Schedule.js":
+/***/ "./resources/js/public/views/HomePage.js":
 /*!***********************************************!*\
-  !*** ./resources/js/public/views/Schedule.js ***!
+  !*** ./resources/js/public/views/HomePage.js ***!
   \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -60571,28 +60691,90 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Schedule =
+var HomePage =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Schedule, _Component);
+  _inherits(HomePage, _Component);
 
-  function Schedule() {
-    _classCallCheck(this, Schedule);
+  function HomePage() {
+    _classCallCheck(this, HomePage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Schedule).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(HomePage).apply(this, arguments));
   }
 
-  _createClass(Schedule, [{
+  _createClass(HomePage, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Schedule"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome to the schedule page of the public-facing side of the application."));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome to the home page of the public-facing side of the application."));
     }
   }]);
 
-  return Schedule;
+  return HomePage;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Schedule);
+/* harmony default export */ __webpack_exports__["default"] = (HomePage);
+
+/***/ }),
+
+/***/ "./resources/js/public/views/SchedulePage.js":
+/*!***************************************************!*\
+  !*** ./resources/js/public/views/SchedulePage.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Schedule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Schedule */ "./resources/js/public/components/Schedule.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var SchedulePage =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SchedulePage, _Component);
+
+  function SchedulePage() {
+    _classCallCheck(this, SchedulePage);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SchedulePage).apply(this, arguments));
+  }
+
+  _createClass(SchedulePage, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Test Schedule"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Schedule__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        publicFacing: false
+      }));
+    }
+  }]);
+
+  return SchedulePage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (SchedulePage);
 
 /***/ }),
 

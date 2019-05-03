@@ -374,7 +374,7 @@ footer {
   font-size: 1.6rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   header,
   main,
   footer {
@@ -400,7 +400,7 @@ header > span {
   font-size: 2rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
   header {
     display: none !important;
   }
@@ -408,5 +408,108 @@ header > span {
 
 main > div {
   padding: 1.5rem;
+}
+
+.schedule {
+  background-color: #f2f2f2;
+  overflow: auto;
+  max-height: calc(100vh - 178px);
+}
+
+@media (min-width: 993px) {
+  .schedule {
+    max-height: calc(100vh - 128px);
+  }
+}
+
+.schedule__container {
+  display: flex;
+}
+
+.schedule__labels {
+  flex: none;
+  width: 70px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.schedule__label {
+  height: 75px;
+  vertical-align: top !important;
+  padding: 0;
+  position: relative;
+}
+
+.schedule__label:first-of-type {
+  height: 100px;
+}
+
+.schedule__label > span:first-of-type {
+  position: absolute;
+  right: 0.5rem;
+  top: -1rem;
+  color: #929292;
+}
+
+.schedule__label__line {
+  content: "";
+  height: 3px;
+  background-color: #f2f2f2;
+  position: absolute;
+  left: 70px;
+}
+
+.schedule__grid {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.schedule__grid__item {
+  flex: 0 0 150px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 2px;
+}
+
+.schedule__grid__item__header {
+  flex: none;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+  text-transform: uppercase;
+  padding: 12px;
+  font-weight: bold;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.schedule__grid__item__header > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.schedule__grid__item::after {
+  flex: 1 0 auto;
+  background-color: white;
+  content: "";
+}
+
+.schedule__grid__add-item {
+  cursor: pointer;
+  padding: 1rem;
+  flex: 0 0 50px;
+  background-color: lightgreen;
+  box-sizing: border-box;
+}
+
+.schedule-page h2 {
+  margin-top: 0;
 }
 
