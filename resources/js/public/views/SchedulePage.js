@@ -7,7 +7,7 @@ class SchedulePage extends Component {
     return (
       <div className="schedule-page">
         <h2>Test Schedule</h2>
-        <Schedule publicFacing={false} />
+        <Schedule />
       </div>
     );
   }
