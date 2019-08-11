@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "materialize-css": "^1.0.0",
+        "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
         "react-router-dom": "^5.0.1"
     }

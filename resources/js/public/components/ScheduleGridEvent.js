@@ -11,10 +11,12 @@ class ScheduleGridEvent extends Component {
 
   render () {
     // const duration = event.time_start to event.time_end (in minutes)
+    // moment(event.time_start).from(event.time_end)
     const duration = 50
     const itemHeight = this.defaultBlockHeight * (duration / 60)
 
     // const differenceStartToEvent = event.time_start to this.eventStartTime
+    // moment(event.time_start).from(this.eventStartTime)
     const differenceStartToEvent = 4
     const startLoc = (this.defaultBlockHeight * differenceStartToEvent) - (differenceStartToEvent * 1.5)
 
