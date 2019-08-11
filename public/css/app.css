@@ -500,12 +500,19 @@ main > div {
   content: "";
 }
 
-.schedule__grid__add-item {
-  cursor: pointer;
-  padding: 1rem;
-  flex: 0 0 50px;
-  background-color: lightgreen;
-  box-sizing: border-box;
+.schedule__event {
+  background-color: lightblue;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.schedule__event__title {
+  text-align: center;
+}
+
+.schedule__event__time {
+  text-align: center;
+  font-style: italic;
 }
 
 .schedule-page h2 {

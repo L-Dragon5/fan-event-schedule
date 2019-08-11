@@ -27,6 +27,11 @@ class SettingsTableSeeder extends Seeder
         ]);
 
         DB::table('settings')->insert([
+            'key' => 'event_start_time',
+            'value' => '10:00:00'
+        ]);
+
+        DB::table('settings')->insert([
             'key' => 'social_fb',
             'value' => 'https://facebook.com/kisetsucon/'
         ]);

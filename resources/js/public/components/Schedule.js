@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import ScheduleGridRoom from './ScheduleGridRoom'
 
 class Schedule extends Component {
   constructor (props) {
@@ -8,11 +9,15 @@ class Schedule extends Component {
     this.state = {
       schedule: []
     }
+
+    this.lineWidth = 154
+    this.eventStartTime = '08:00:00'
+    this.defaultBlockHeight = (this.lineWidth / 2)
   }
 
   updateLines () {
     const gridItemCount = document.querySelectorAll('.schedule__grid__item').length
-    const newLineWidth = gridItemCount * 154
+    const newLineWidth = gridItemCount * this.lineWidth
     const labelLines = document.querySelectorAll('.schedule__label__line')
     labelLines.forEach((ele, index) => {
       ele.style.width = newLineWidth + 'px'
@@ -20,6 +25,14 @@ class Schedule extends Component {
   }
 
   componentDidMount () {
+    // Get Event Start Time from DB
+    axios.get('/api/setting/event_start_time').then(response => {
+      if (response.data != null) {
+        this.eventStartTime = response.data
+      }
+    })
+
+    // Get all events for schedule from DB
     axios.get('/api/schedule').then(response => {
       this.setState({
         schedule: response.data
@@ -63,13 +76,12 @@ class Schedule extends Component {
                   return (
                     <div className='schedule__grid__item' key={room}>
                       <div className='schedule__grid__item__header'><span>{room}</span></div>
-
-                      {roomList.map((event, index) => {
-                        return (
-                          <div className='schedule__grid__item__item' key={event.title}>{event.title}</div>
-                        )
-                      })}
-
+                      <ScheduleGridRoom
+                        key={room}
+                        rooms={roomList}
+                        eventStartTime={this.eventStartTime}
+                        defaultBlockHeight={this.defaultBlockHeight}
+                      />
                     </div>
                   )
                 })

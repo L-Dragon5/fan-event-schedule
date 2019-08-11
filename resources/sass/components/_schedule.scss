@@ -80,13 +80,20 @@
         content: '';
       }
     }
+  }
 
-    &__add-item {
-      cursor: pointer;
-      padding: 1rem;
-      flex: 0 0 50px;
-      background-color: lightgreen;
-      box-sizing: border-box;
+  &__event {
+    background-color: lightblue;
+    padding: 2px;
+    overflow: hidden;
+
+    &__title {
+      text-align: center;
+    }
+
+    &__time {
+      text-align: center;
+      font-style: italic;
     }
   }
 }

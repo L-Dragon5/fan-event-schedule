@@ -64706,7 +64706,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
@@ -64776,7 +64776,7 @@ function (_Component) {
         className: "user-view"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "name"
-      }, "Kisetsucon 2019"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, process.env.MIX_EVENT_NAME))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "divider"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         exact: true,
@@ -64797,7 +64797,7 @@ function (_Component) {
         className: "sidenav-trigger"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "material-icons"
-      }, "menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Kisetsucon 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, routeComponents));
+      }, "menu")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, process.env.MIX_EVENT_NAME)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, routeComponents));
     }
   }]);
 
@@ -64813,6 +64813,7 @@ if (document.getElementById("public-root")) {
     var instance = M.Sidenav.init(elem);
   });
 }
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -64829,6 +64830,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ScheduleGridRoom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ScheduleGridRoom */ "./resources/js/public/components/ScheduleGridRoom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64850,6 +64852,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Schedule =
 /*#__PURE__*/
 function (_Component) {
@@ -64864,6 +64867,9 @@ function (_Component) {
     _this.state = {
       schedule: []
     };
+    _this.lineWidth = 154;
+    _this.eventStartTime = '08:00:00';
+    _this.defaultBlockHeight = _this.lineWidth / 2;
     return _this;
   }
 
@@ -64871,7 +64877,7 @@ function (_Component) {
     key: "updateLines",
     value: function updateLines() {
       var gridItemCount = document.querySelectorAll('.schedule__grid__item').length;
-      var newLineWidth = gridItemCount * 154;
+      var newLineWidth = gridItemCount * this.lineWidth;
       var labelLines = document.querySelectorAll('.schedule__label__line');
       labelLines.forEach(function (ele, index) {
         ele.style.width = newLineWidth + 'px';
@@ -64881,6 +64887,13 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
+
+      // Get Event Start Time from DB
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/setting/event_start_time').then(function (response) {
+        if (response.data != null) {
+          _this2.eventStartTime = response.data;
+        }
+      }); // Get all events for schedule from DB
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/schedule').then(function (response) {
         _this2.setState({
@@ -64896,6 +64909,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var schedule = this.state.schedule;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "schedule"
@@ -64971,11 +64986,11 @@ function (_Component) {
           key: room
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "schedule__grid__item__header"
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, room)), roomList.map(function (event, index) {
-          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-            className: "schedule__grid__item__item",
-            key: event.title
-          }, event.title);
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, room)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ScheduleGridRoom__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: room,
+          rooms: roomList,
+          eventStartTime: _this3.eventStartTime,
+          defaultBlockHeight: _this3.defaultBlockHeight
         }));
       })))));
     }
@@ -64985,6 +65000,164 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Schedule);
+
+/***/ }),
+
+/***/ "./resources/js/public/components/ScheduleGridEvent.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/public/components/ScheduleGridEvent.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ScheduleGridEvent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ScheduleGridEvent, _Component);
+
+  function ScheduleGridEvent(props) {
+    var _this;
+
+    _classCallCheck(this, ScheduleGridEvent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ScheduleGridEvent).call(this, props));
+    _this.event = props.event;
+    _this.eventStartTime = props.eventStartTime;
+    _this.defaultBlockHeight = props.defaultBlockHeight;
+    return _this;
+  }
+
+  _createClass(ScheduleGridEvent, [{
+    key: "render",
+    value: function render() {
+      // const duration = event.time_start to event.time_end (in minutes)
+      var duration = 50;
+      var itemHeight = this.defaultBlockHeight * (duration / 60); // const differenceStartToEvent = event.time_start to this.eventStartTime
+
+      var differenceStartToEvent = 4;
+      var startLoc = this.defaultBlockHeight * differenceStartToEvent - differenceStartToEvent * 1.5;
+      var itemStyle = {
+        position: 'absolute',
+        height: itemHeight + 'px',
+        width: '150px',
+        top: startLoc + 'px'
+      };
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: itemStyle,
+        className: "schedule__event"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__event__title"
+      }, this.event.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "schedule__event__time"
+      }, this.event.time_start, " - ", this.event.time_end));
+    }
+  }]);
+
+  return ScheduleGridEvent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (ScheduleGridEvent);
+
+/***/ }),
+
+/***/ "./resources/js/public/components/ScheduleGridRoom.js":
+/*!************************************************************!*\
+  !*** ./resources/js/public/components/ScheduleGridRoom.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ScheduleGridEvent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScheduleGridEvent */ "./resources/js/public/components/ScheduleGridEvent.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ScheduleGridRoom =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ScheduleGridRoom, _Component);
+
+  function ScheduleGridRoom(props) {
+    var _this;
+
+    _classCallCheck(this, ScheduleGridRoom);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ScheduleGridRoom).call(this, props));
+    _this.rooms = props.rooms;
+    _this.eventStartTime = props.eventStartTime;
+    _this.defaultBlockHeight = props.defaultBlockHeight;
+    return _this;
+  }
+
+  _createClass(ScheduleGridRoom, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: 'relative'
+        }
+      }, this.rooms.map(function (event, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScheduleGridEvent__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: event.title,
+          event: event,
+          eventStartTime: _this2.eventStartTime,
+          defaultBlockHeight: _this2.defaultBlockHeight
+        });
+      }));
+    }
+  }]);
+
+  return ScheduleGridRoom;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (ScheduleGridRoom);
 
 /***/ }),
 
