@@ -7,11 +7,11 @@ class Schedule extends Component {
     super(props)
 
     this.state = {
-      schedule: []
+      schedule: [],
+      eventStartTime: '08:00:00'
     }
 
     this.lineWidth = 154
-    this.eventStartTime = '08:00:00'
     this.defaultBlockHeight = (this.lineWidth / 2)
   }
 
@@ -28,7 +28,9 @@ class Schedule extends Component {
     // Get Event Start Time from DB
     axios.get('/api/setting/event_start_time').then(response => {
       if (response.data != null) {
-        this.eventStartTime = response.data
+        this.setState({
+          eventStartTime: response.data
+        })
       }
     })
 
@@ -45,7 +47,7 @@ class Schedule extends Component {
   }
 
   render () {
-    const { schedule } = this.state
+    const schedule = this.state.schedule
     return (
       <div>
         <div className='schedule'>
@@ -79,7 +81,7 @@ class Schedule extends Component {
                       <ScheduleGridRoom
                         key={room}
                         rooms={roomList}
-                        eventStartTime={this.eventStartTime}
+                        eventStartTime={this.state.eventStartTime}
                         defaultBlockHeight={this.defaultBlockHeight}
                       />
                     </div>

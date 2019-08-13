@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 class ScheduleGridEvent extends Component {
   constructor (props) {
@@ -10,14 +11,14 @@ class ScheduleGridEvent extends Component {
   }
 
   render () {
-    // const duration = event.time_start to event.time_end (in minutes)
-    // moment(event.time_start).from(event.time_end)
-    const duration = 50
+    // Get item height based on duration
+    const eventTimeDiff = moment.duration(moment(this.event.time_end, 'HH:mm:ss').diff(moment(this.event.time_start, 'HH:mm:ss')))
+    const duration = eventTimeDiff.asMinutes()
     const itemHeight = this.defaultBlockHeight * (duration / 60)
 
-    // const differenceStartToEvent = event.time_start to this.eventStartTime
-    // moment(event.time_start).from(this.eventStartTime)
-    const differenceStartToEvent = 4
+    // Get item veritcal location based on start time
+    const eventOffsetDiff = moment.duration(moment(this.event.time_start, 'HH:mm:ss').diff(moment(this.eventStartTime, 'HH:mm:ss')))
+    const differenceStartToEvent = eventOffsetDiff.asHours()
     const startLoc = (this.defaultBlockHeight * differenceStartToEvent) - (differenceStartToEvent * 1.5)
 
     const itemStyle = {
@@ -35,7 +36,7 @@ class ScheduleGridEvent extends Component {
           {this.event.title}
         </div>
         <div className='schedule__event__time'>
-          {this.event.time_start} - {this.event.time_end}
+          {moment(this.event.time_start, 'HH:mm:ss').format('hh:mmA')} - {moment(this.event.time_end, 'HH:mm:ss').format('hh:mmA')}
         </div>
       </div>
     )
