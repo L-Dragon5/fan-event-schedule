@@ -18,4 +18,21 @@ class SettingController extends Controller
             return null;
         }
     }
+
+    public function getSocial() {
+        $social_fb = Setting::find('social_fb');
+        $social_tw = Setting::find('social_tw');
+        $social_ig = Setting::find('social_ig');
+        $socials = [
+            'social_fb' => $social_fb->value,
+            'social_tw' => $social_tw->value,
+            'social_ig' => $social_ig->value,
+        ];
+        
+        if(!empty($socials)) {
+            return $socials;
+        } else {
+            return null;
+        }
+    }
 }

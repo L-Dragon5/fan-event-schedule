@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('schedule', 'ScheduleController@index');
 
 Route::get('setting/{key}', 'SettingController@getByKey');
+Route::get('settings/social', 'SettingController@getSocial');

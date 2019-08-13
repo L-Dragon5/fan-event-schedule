@@ -19,7 +19,7 @@ class ScheduleGridEvent extends Component {
     // Get item veritcal location based on start time
     const eventOffsetDiff = moment.duration(moment(this.event.time_start, 'HH:mm:ss').diff(moment(this.eventStartTime, 'HH:mm:ss')))
     const differenceStartToEvent = eventOffsetDiff.asHours()
-    const startLoc = (this.defaultBlockHeight * differenceStartToEvent) - (differenceStartToEvent * 1.5)
+    const startLoc = ((this.defaultBlockHeight * differenceStartToEvent) - (differenceStartToEvent * 2)) + 3
 
     const itemStyle = {
       position: 'absolute',

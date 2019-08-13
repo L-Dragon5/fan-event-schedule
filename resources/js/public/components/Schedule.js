@@ -7,8 +7,7 @@ class Schedule extends Component {
     super(props)
 
     this.state = {
-      schedule: [],
-      eventStartTime: '08:00:00'
+      schedule: []
     }
 
     this.lineWidth = 154
@@ -70,7 +69,7 @@ class Schedule extends Component {
               <div className='schedule__label'><span>11PM</span><span className='schedule__label__line' /></div>
             </div>
             <div className='schedule__grid'>
-              {
+              { this.state && this.state.eventStartTime && schedule &&
                 Object.entries(schedule).map((k, index) => {
                   const room = k[0]
                   const roomList = k[1]
