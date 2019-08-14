@@ -21,3 +21,5 @@ Route::get('schedule', 'ScheduleController@index');
 
 Route::get('setting/{key}', 'SettingController@getByKey');
 Route::get('settings/social', 'SettingController@getSocial');
+Route::get('rules', 'RuleController@index');
+Route::get('sellers', 'SellerController@index');

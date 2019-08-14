@@ -4,14 +4,17 @@ import ReactDOM from 'react-dom'
 import { Route, NavLink, HashRouter } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShareSquare } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 // Custom
 import HomePage from './views/HomePage'
 import SchedulePage from './views/SchedulePage'
+import RulesPage from './views/RulesPage'
+import SellersPage from './views/SellersPage'
 import ExternalLink from './components/ExternalLink'
 
-library.add(fab)
+library.add(fab, faShareSquare)
 
 const routes = [
   {
@@ -21,6 +24,14 @@ const routes = [
   {
     path: '/schedule',
     component: SchedulePage
+  },
+  {
+    path: '/rules',
+    component: RulesPage
+  },
+  {
+    path: '/exhibitors',
+    component: SellersPage
   }
 ]
 
@@ -41,7 +52,8 @@ class PublicMain extends Component {
         this.setState({
           socialFB: response.data.social_fb,
           socialTW: response.data.social_tw,
-          socialIG: response.data.social_ig
+          socialIG: response.data.social_ig,
+          socialWeb: response.data.social_web
         })
       }
     })
@@ -55,21 +67,26 @@ class PublicMain extends Component {
         <ul id='sidebar' className='sidenav sidenav-fixed'>
           <li>
             <div className='user-view'>
-              <span className='name'>{process.env.MIX_EVENT_NAME}</span>
-              <div style={{ fontSize: '2rem' }}>
+              <span style={{ fontSize: '2.2rem' }}>{process.env.MIX_EVENT_NAME}</span>
+              <div>
                 { this.state && this.state.socialFB &&
-                  <ExternalLink href={this.state.socialFB}>
+                  <ExternalLink href={this.state.socialFB} icon>
                     <FontAwesomeIcon icon={['fab', 'facebook-square']} />
                   </ExternalLink>
                 }
                 { this.state && this.state.socialTW &&
-                  <ExternalLink href={this.state.socialTW}>
+                  <ExternalLink href={this.state.socialTW} icon>
                     <FontAwesomeIcon icon={['fab', 'twitter-square']} />
                   </ExternalLink>
                 }
                 { this.state && this.state.socialIG &&
-                  <ExternalLink href={this.state.socialIG}>
+                  <ExternalLink href={this.state.socialIG} icon>
                     <FontAwesomeIcon icon={['fab', 'instagram']} />
+                  </ExternalLink>
+                }
+                { this.state && this.state.socialWeb &&
+                  <ExternalLink href={this.state.socialWeb} icon className='right'>
+                    <FontAwesomeIcon icon='share-square' />
                   </ExternalLink>
                 }
               </div>
@@ -92,6 +109,16 @@ class PublicMain extends Component {
           <li>
             <NavLink to='/schedule' className='waves-effect'>
               <i className='material-icons'>web</i>Schedule
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/exhibitors' className='waves-effect'>
+              <i className='material-icons'>shopping_cart</i>Exhibitors
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/rules' className='waves-effect'>
+              <i className='material-icons'>list_alt</i>Rules
             </NavLink>
           </li>
         </ul>
@@ -117,7 +144,8 @@ if (document.getElementById('public-root')) {
   ReactDOM.render(<PublicMain />, document.getElementById('public-root'))
 
   document.addEventListener('DOMContentLoaded', () => {
-    const elem = document.querySelector('.sidenav')
-    M.Sidenav.init(elem)
+    const sidebar = document.querySelector('.sidenav')
+
+    M.Sidenav.init(sidebar)
   })
 }

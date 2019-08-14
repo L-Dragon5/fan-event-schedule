@@ -1,16 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import Schedule from '../components/Schedule';
+import Schedule from '../components/Schedule'
 
 class SchedulePage extends Component {
-  render() {
+  render () {
     return (
-      <div className="schedule-page">
-        <h2>Test Schedule</h2>
+      <div className='schedule-page'>
+        <h2>Schedule</h2>
         <Schedule />
       </div>
-    );
+    )
   }
 }
-
-export default SchedulePage;
+export default SchedulePage

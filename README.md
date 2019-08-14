@@ -6,37 +6,32 @@ Built on Laravel REST API backend with a ReactJS frontend.
 Using Google's Material Design to create a clean user interface, different from Bootstrap.
 
 ## To-Do
-
-### Page Layout
-- Buy Tickets (External Link)
 - General Info
-  - Name
-  - Date
+  - WYSIWYG (Summernotes)
+- Schedule
+  - List by Time
+  - Filter Options
+- Schedule - Single View
+  - Type
+  - Tags
+  - Title
+  - Date / Time
   - Location
   - Description
-  - Images
-- Schedules
-  - List by Location
-  - List by Date
-  - Filter Options
-  - Schedule Listing
-    - Type
-    - Tags
-    - Title
-    - Date / Time
-    - Location
-    - Description
-    - Image
+  - Image
 - Guests
   - List by Type
-  - Guest Listing
-    - Name
-    - Description
-    - Social Media
-- Exhibitors
-- Social Media
-  - Bring up menu of external links
+- Guest - Single View
+  - Name
+  - Description
+  - Social Media
 - Maps
   - Collection of Images
-- Rules & Policies
-  - Title and Body
+
+## Finished
+~~- Buy Tickets (External Link)~~
+- Schedules
+  ~~- Grid Layout~~
+~~- Social Media Links~~
+~~- Exhibitors~~
+~~- Rules & Polcies~~

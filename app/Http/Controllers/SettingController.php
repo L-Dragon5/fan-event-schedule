@@ -23,10 +23,13 @@ class SettingController extends Controller
         $social_fb = Setting::find('social_fb');
         $social_tw = Setting::find('social_tw');
         $social_ig = Setting::find('social_ig');
+        $social_web = Setting::find('social_web');
+
         $socials = [
             'social_fb' => $social_fb->value,
             'social_tw' => $social_tw->value,
             'social_ig' => $social_ig->value,
+            'social_web' => $social_web->value
         ];
         
         if(!empty($socials)) {
