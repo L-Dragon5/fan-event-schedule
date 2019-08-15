@@ -1,16 +1,34 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 
 class ScheduleGridEvent extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      toSingle: false
+    }
+
     this.event = props.event
     this.eventStartTime = props.eventStartTime
     this.defaultBlockHeight = props.defaultBlockHeight
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick () {
+    this.setState({
+      toSingle: true
+    })
   }
 
   render () {
+    if (this.state.toSingle === true) {
+      const url = '/event/' + this.event.id
+      return <Redirect push to={url} />
+    }
+
     // Get item height based on duration
     const eventTimeDiff = moment.duration(moment(this.event.time_end, 'HH:mm:ss').diff(moment(this.event.time_start, 'HH:mm:ss')))
     const duration = eventTimeDiff.asMinutes()
@@ -30,6 +48,7 @@ class ScheduleGridEvent extends Component {
 
     return (
       <div
+        onClick={this.handleClick}
         style={itemStyle}
         className='schedule__event'>
         <div className='schedule__event__title'>

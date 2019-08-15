@@ -7,12 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareSquare } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
-// Custom
+// Pages
 import HomePage from './views/HomePage'
 import SchedulePage from './views/SchedulePage'
 import RulesPage from './views/RulesPage'
 import SellersPage from './views/SellersPage'
+import GuestsPage from './views/GuestsPage'
+
+// Components
 import ExternalLink from './components/ExternalLink'
+import SingleEvent from './components/SingleEvent'
 
 library.add(fab, faShareSquare)
 
@@ -32,6 +36,14 @@ const routes = [
   {
     path: '/exhibitors',
     component: SellersPage
+  },
+  {
+    path: '/guests',
+    component: GuestsPage
+  },
+  {
+    path: '/event/:eventId',
+    component: SingleEvent
   }
 ]
 
@@ -109,6 +121,11 @@ class PublicMain extends Component {
           <li>
             <NavLink to='/schedule' className='waves-effect'>
               <i className='material-icons'>web</i>Schedule
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/guests' className='waves-effect'>
+              <i className='material-icons'>people</i>Guests
             </NavLink>
           </li>
           <li>

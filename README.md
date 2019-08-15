@@ -6,25 +6,24 @@ Built on Laravel REST API backend with a ReactJS frontend.
 Using Google's Material Design to create a clean user interface, different from Bootstrap.
 
 ## To-Do
-- General Info
+
+### Admin-Side
+- Everything
   - WYSIWYG (Summernotes)
+  - Image Upload
+
+### Public-Side
+- General Info
 - Schedule
-  - List by Time
+  - List Layout
+  - Single View (Needs styling)
+  - Layout Switcher
   - Filter Options
-- Schedule - Single View
-  - Type
-  - Tags
-  - Title
-  - Date / Time
-  - Location
-  - Description
-  - Image
 - Guests
-  - List by Type
-- Guest - Single View
-  - Name
-  - Description
-  - Social Media
+  - Guest Single View
+    - Name
+    - Description
+    - Social Media
 - Maps
   - Collection of Images
 
@@ -35,3 +34,5 @@ Using Google's Material Design to create a clean user interface, different from 
 ~~- Social Media Links~~
 ~~- Exhibitors~~
 ~~- Rules & Polcies~~
+-Guests
+  ~~- List by Type~~

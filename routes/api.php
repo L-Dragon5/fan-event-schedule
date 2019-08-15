@@ -23,3 +23,6 @@ Route::get('setting/{key}', 'SettingController@getByKey');
 Route::get('settings/social', 'SettingController@getSocial');
 Route::get('rules', 'RuleController@index');
 Route::get('sellers', 'SellerController@index');
+Route::get('guests', 'GuestController@index');
+
+Route::get('event/{id}', 'EventController@view');
