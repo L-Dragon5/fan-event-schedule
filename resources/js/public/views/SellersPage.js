@@ -39,7 +39,7 @@ class SellersPage extends Component {
                     } else {
                       return (
                         <li key={seller.id} className='collection-item'>
-                          {seller.name}
+                          <span>{seller.name}</span>
                         </li>
                       )
                     }

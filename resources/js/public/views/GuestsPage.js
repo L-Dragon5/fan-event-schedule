@@ -30,8 +30,8 @@ class GuestsPage extends Component {
                     const guest = k[1]
 
                     return (
-                      <li key={guest.id} className='collection-item'>
-                        {guest.name}
+                      <li key={guest.id} className='collection-item guests__item'>
+                        <a href={'/#/guest/' + guest.id} className='guests__link'>{guest.name}</a>
                       </li>
                     )
                   })

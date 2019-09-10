@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 class HomePage extends Component {
-  render() {
+  render () {
     return (
       <div>
         <h2>Home</h2>
@@ -13,4 +13,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default HomePage

@@ -1,0 +1,17 @@
+.event {
+  &__time-and-date {
+    & span {
+      font-size: 1.8rem;
+      margin: 0 1rem;
+
+      @include respond-below(sm) {
+        display: block;
+      }
+    }
+  }
+
+  &__location {
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+}

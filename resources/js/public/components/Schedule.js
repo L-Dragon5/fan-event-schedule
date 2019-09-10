@@ -69,8 +69,8 @@ class Schedule extends Component {
               <div className='schedule__label'><span>11PM</span><span className='schedule__label__line' /></div>
             </div>
             <div className='schedule__grid'>
-              { this.state && this.state.eventStartTime && schedule &&
-                Object.entries(schedule).map((k, index) => {
+              { this.state && this.state.eventStartTime && schedule
+                ? (Object.entries(schedule).map((k, index) => {
                   const room = k[0]
                   const roomList = k[1]
 
@@ -85,7 +85,19 @@ class Schedule extends Component {
                       />
                     </div>
                   )
-                })
+                })) : (
+                  <div className='preloader-wrapper big active'>
+                    <div className='spinner-layer spinner-blue-only'>
+                      <div className='circle-clipper left'>
+                        <div className='circle' />
+                      </div><div className='gap-patch'>
+                        <div className='circle' />
+                      </div><div className='circle-clipper right'>
+                        <div className='circle' />
+                      </div>
+                    </div>
+                  </div>
+                )
               }
             </div>
           </div>

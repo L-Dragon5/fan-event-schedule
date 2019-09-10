@@ -39,3 +39,48 @@ header {
 main > div {
   padding: 1.5rem;
 }
+
+strong {
+  font-weight: bold;
+}
+
+.responsive-text {
+  font-size: 5vw;
+
+  @include respond-above(xs) {
+    font-size: 3vw;
+  }
+
+  @include respond-above(sm) {
+    font-size: 2vw;
+  }
+
+  @include respond-above(lg) {
+    font-size: 1.3vw;
+  }
+}
+
+li.collection-item {
+  padding: 0 !important;
+
+  & > span {
+    display: block;
+    padding: 10px 20px;
+  }
+
+  & > a {
+    display: block;
+    padding: 10px 20px;
+    transition: all 0.35s;
+
+    &:visited,
+    &:link {
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    &:active,
+    &:hover {
+      background-color: #ffcc80;
+    }
+  }
+}

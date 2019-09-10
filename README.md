@@ -16,23 +16,19 @@ Using Google's Material Design to create a clean user interface, different from 
 - General Info
 - Schedule
   - List Layout
-  - Single View (Needs styling)
   - Layout Switcher
   - Filter Options
-- Guests
-  - Guest Single View
-    - Name
-    - Description
-    - Social Media
 - Maps
   - Collection of Images
 
 ## Finished
-~~- Buy Tickets (External Link)~~
-- Schedules
-  ~~- Grid Layout~~
-~~- Social Media Links~~
-~~- Exhibitors~~
-~~- Rules & Polcies~~
--Guests
-  ~~- List by Type~~
+- ~~Buy Tickets (External Link)~~
+- ~~Schedules~~
+  - ~~Grid Layout~~
+  - ~~Single View~~
+- ~~Social Media Links~~
+- ~~Exhibitors~~
+- ~~Rules & Polcies~~
+- ~~Guests~~
+  - ~~List by Type~~
+  - ~~Single View~~

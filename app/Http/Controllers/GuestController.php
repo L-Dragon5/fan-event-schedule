@@ -25,4 +25,12 @@ class GuestController extends Controller
 
         return $return;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function view($id) {
+        $guest = Guest::find($id);
+        return $guest;
+    }
 }

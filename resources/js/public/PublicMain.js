@@ -17,6 +17,7 @@ import GuestsPage from './views/GuestsPage'
 // Components
 import ExternalLink from './components/ExternalLink'
 import SingleEvent from './components/SingleEvent'
+import SingleGuest from './components/SingleGuest'
 
 library.add(fab, faShareSquare)
 
@@ -44,6 +45,10 @@ const routes = [
   {
     path: '/event/:eventId',
     component: SingleEvent
+  },
+  {
+    path: '/guest/:guestId',
+    component: SingleGuest
   }
 ]
 
@@ -114,27 +119,27 @@ class PublicMain extends Component {
             </li>
           }
           <li>
-            <NavLink exact to='/' className='waves-effect'>
+            <NavLink exact to='/' className='waves-effect sidenav-close'>
               <i className='material-icons'>home</i>General Information
             </NavLink>
           </li>
           <li>
-            <NavLink to='/schedule' className='waves-effect'>
+            <NavLink to='/schedule' className='waves-effect sidenav-close'>
               <i className='material-icons'>web</i>Schedule
             </NavLink>
           </li>
           <li>
-            <NavLink to='/guests' className='waves-effect'>
+            <NavLink to='/guests' className='waves-effect sidenav-close'>
               <i className='material-icons'>people</i>Guests
             </NavLink>
           </li>
           <li>
-            <NavLink to='/exhibitors' className='waves-effect'>
+            <NavLink to='/exhibitors' className='waves-effect sidenav-close'>
               <i className='material-icons'>shopping_cart</i>Exhibitors
             </NavLink>
           </li>
           <li>
-            <NavLink to='/rules' className='waves-effect'>
+            <NavLink to='/rules' className='waves-effect sidenav-close'>
               <i className='material-icons'>list_alt</i>Rules
             </NavLink>
           </li>
