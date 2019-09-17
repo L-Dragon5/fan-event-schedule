@@ -8,13 +8,11 @@
 
         <title>{{ env('MIX_EVENT_NAME') }}</title>
 
-        <!-- Import Google icon Font -->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+
+        <script defer src="{{ mix('js/public-app.js') }}"></script>
     </head>
     <body>
         <div id="public-root"></div>
-
-        <script src="{{ mix('js/public-app.js') }}"></script>
     </body>
 </html>

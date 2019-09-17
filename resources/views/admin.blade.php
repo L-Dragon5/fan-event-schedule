@@ -7,14 +7,24 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Admin | {{ env('MIX_EVENT_NAME') }}</title>
-
-        <!-- Import Google icon Font -->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <script defer src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+        <script defer src="{{ mix('js/admin-app.js') }}"></script>
     </head>
     <body>
         <div id="admin-root"></div>
-
-        <script src="{{ mix('js/admin-app.js') }}"></script>
+        <script>
+        $(function () {
+            $('#summernote').summernote({
+            placeholder: 'Enter text here...',
+            tabsize: 2,
+            height: 450
+            })
+        })
+        </script>
     </body>
 </html>

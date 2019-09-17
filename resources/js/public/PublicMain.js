@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import $ from 'jquery'
 import { Route, NavLink, HashRouter } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -162,12 +163,10 @@ class PublicMain extends Component {
 
 export default PublicMain
 
-if (document.getElementById('public-root')) {
+if ($('#public-root').length) {
   ReactDOM.render(<PublicMain />, document.getElementById('public-root'))
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const sidebar = document.querySelector('.sidenav')
-
-    M.Sidenav.init(sidebar)
+  $(function () {
+    M.Sidenav.init($('.sidenav'))
   })
 }

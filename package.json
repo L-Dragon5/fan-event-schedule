@@ -19,16 +19,19 @@
         "react-dom": "^16.9.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.22.9",
-        "sass-loader": "^7.1.0"
+        "sass-loader": "^7.1.0",
+        "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.21",
         "@fortawesome/free-brands-svg-icons": "^5.10.1",
         "@fortawesome/free-solid-svg-icons": "^5.10.1",
         "@fortawesome/react-fontawesome": "^0.1.4",
+        "jquery": "^3.4.1",
         "materialize-css": "^1.0.0",
         "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
-        "react-router-dom": "^5.0.1"
+        "react-router-dom": "^5.0.1",
+        "summernote": "^0.8.12"
     }
 }

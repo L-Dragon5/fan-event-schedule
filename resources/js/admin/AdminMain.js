@@ -1,18 +1,20 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
 
 class AdminMain extends Component {
-  render() {
+  render () {
     return (
       <div>
         <h3>Admin Page</h3>
+        <div id='summernote' />
       </div>
-    );
+    )
   }
 }
 
-export default AdminMain;
+export default AdminMain
 
-if (document.getElementById("admin-root")) {
-  ReactDOM.render(<AdminMain />, document.getElementById("admin-root"));
+if ($('#admin-root').length) {
+  ReactDOM.render(<AdminMain />, document.getElementById('admin-root'))
 }
