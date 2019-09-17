@@ -32,12 +32,13 @@ class ScheduleGridEvent extends Component {
     // Get item height based on duration
     const eventTimeDiff = moment.duration(moment(this.event.time_end, 'HH:mm:ss').diff(moment(this.event.time_start, 'HH:mm:ss')))
     const duration = eventTimeDiff.asMinutes()
-    const itemHeight = this.defaultBlockHeight * (duration / 60)
+    const ratio = duration / 60
+    const itemHeight = ((this.defaultBlockHeight * ratio) + (3 * Math.floor(ratio - 1)))
 
     // Get item veritcal location based on start time
     const eventOffsetDiff = moment.duration(moment(this.event.time_start, 'HH:mm:ss').diff(moment(this.eventStartTime, 'HH:mm:ss')))
     const differenceStartToEvent = eventOffsetDiff.asHours()
-    const startLoc = ((this.defaultBlockHeight * differenceStartToEvent) - (differenceStartToEvent * 2)) + 3
+    const startLoc = ((this.defaultBlockHeight * differenceStartToEvent) + (3 * (differenceStartToEvent + 1)))
 
     const itemStyle = {
       position: 'absolute',

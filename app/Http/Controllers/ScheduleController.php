@@ -15,10 +15,27 @@ class ScheduleController extends Controller
         $return = [];
         $events = Event::all()->sortBy('time_start');
 
+        // Set all events to location
         foreach ($events as $event) {
             $loc = Location::find($event->location_id);
 
-            $return[$loc->name][] = $event;
+            $return[$loc->id][] = $event;
+
+            if(!isset($return[$loc->id]['name'])) {
+                $return[$loc->id]['name'] = $loc->name;
+            }
+        }
+
+        // Sort events by location id
+        ksort($return);
+
+        // Set events by location name instead of id
+        foreach($return as $k => $v) {
+            $name = $return[$k]['name'];
+
+            unset($return[$k]['name']);
+            $return[$name] = $return[$k];
+            unset($return[$k]);
         }
 
         return $return;

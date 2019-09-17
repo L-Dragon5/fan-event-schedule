@@ -11,7 +11,7 @@ class Schedule extends Component {
     }
 
     this.lineWidth = 154
-    this.defaultBlockHeight = (this.lineWidth / 2)
+    this.defaultBlockHeight = 72
   }
 
   updateLines () {

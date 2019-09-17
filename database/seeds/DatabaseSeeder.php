@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    private $kisetsucon = true;
+    
     /**
      * Seed the application's database.
      *
@@ -11,15 +13,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            EventTypesTableSeeder::class,
-            SettingsTableSeeder::class,
-            LocationsTableSeeder::class,
-            SellersTableSeeder::class,
-            RulesTableSeeder::class,
-            PartnersTableSeeder::class,
-            GuestsTableSeeder::class,
-            EventsTableSeeder::class,
-        ]);
+        if($this->kisetsucon) {
+            $this->call([
+                KisetsuconEventTypesTableSeeder::class,
+                KisetsuconSettingsTableSeeder::class,
+                KisetsuconLocationsTableSeeder::class,
+                KisetsuconSellersTableSeeder::class,
+                KisetsuconRulesTableSeeder::class,
+                KisetsuconPartnersTableSeeder::class,
+                KisetsuconGuestsTableSeeder::class,
+                KisetsuconEventsTableSeeder::class,
+            ]);
+        } else {
+            $this->call([
+                EventTypesTableSeeder::class,
+                SettingsTableSeeder::class,
+                LocationsTableSeeder::class,
+                SellersTableSeeder::class,
+                RulesTableSeeder::class,
+                PartnersTableSeeder::class,
+                GuestsTableSeeder::class,
+                EventsTableSeeder::class,
+            ]);
+        }
     }
 }

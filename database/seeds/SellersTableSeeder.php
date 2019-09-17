@@ -12,7 +12,7 @@ class SellersTableSeeder extends Seeder
     public function run()
     {
         DB::table('sellers')->insert([
-            'name' => 'Hammergirl Anime',
+            'name' => 'Vendor A',
             'category' => 'Vendor'
         ]);
 

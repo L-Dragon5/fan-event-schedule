@@ -13,17 +13,16 @@ class SettingsTableSeeder extends Seeder
     {
         DB::table('settings')->insert([
             'key' => 'registration_link',
-            'value' => 'https://www.kisetsucon.org/registration/attendee/'
         ]);
 
         DB::table('settings')->insert([
             'key' => 'event_name',
-            'value' => 'Kisetsucon 2019'
+            'value' => 'Example Event'
         ]);
 
         DB::table('settings')->insert([
             'key' => 'event_date',
-            'value' => 'October 13th, 2019'
+            'value' => 'January 1st, 2020'
         ]);
 
         DB::table('settings')->insert([
@@ -32,23 +31,19 @@ class SettingsTableSeeder extends Seeder
         ]);
 
         DB::table('settings')->insert([
-            'key' => 'social_fb',
-            'value' => 'https://facebook.com/kisetsucon/'
+            'key' => 'social_fb'
         ]);
 
         DB::table('settings')->insert([
-            'key' => 'social_tw',
-            'value' => 'https://twitter.com/kisetsucon/'
+            'key' => 'social_tw'
         ]);
 
         DB::table('settings')->insert([
-            'key' => 'social_ig',
-            'value' => 'https://instagram.com/kisetsucon/'
+            'key' => 'social_ig'
         ]);
 
         DB::table('settings')->insert([
-            'key' => 'social_web',
-            'value' => 'https://kisetsucon.org/'
+            'key' => 'social_web'
         ]);
     }
 }
