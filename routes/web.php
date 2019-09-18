@@ -14,7 +14,3 @@
 Route::get('/', function () {
     return view('public');
 });
-
-Route::get('/admin', function() {
-    return view('admin');
-});

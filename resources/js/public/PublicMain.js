@@ -16,9 +16,11 @@ import SellersPage from './views/SellersPage'
 import GuestsPage from './views/GuestsPage'
 
 // Components
-import ExternalLink from './components/ExternalLink'
 import SingleEvent from './components/SingleEvent'
 import SingleGuest from './components/SingleGuest'
+import ExternalLink from './components/ExternalLink'
+import Modal from './components/Modal'
+import LoginButton from './components/auth/LoginButton'
 
 library.add(fab, faShareSquare)
 
@@ -72,6 +74,19 @@ class PublicMain extends Component {
           socialTW: response.data.social_tw,
           socialIG: response.data.social_ig,
           socialWeb: response.data.social_web
+        })
+      }
+    })
+
+    // Check if logged in
+    axios.get('/api/user/canEdit').then(response => {
+      if (response.data && response.data != null) {
+        this.setState({
+          loggedIn: true
+        })
+      } else {
+        this.setState({
+          loggedIn: false
         })
       }
     })
@@ -144,6 +159,19 @@ class PublicMain extends Component {
               <i className='material-icons'>list_alt</i>Rules
             </NavLink>
           </li>
+
+          { (this.state && this.state.loggedIn) ? (
+            <button
+              id='logout'
+              className='waves-effect waves-light btn red lighten-2'
+              style={{ position: 'absolute', bottom: '6%', left: '36%' }}>Logout</button>
+          ) : (
+            <button
+              id='login'
+              data-target='loginModal'
+              className='waves-effect waves-light btn modal-trigger'
+              style={{ position: 'absolute', bottom: '6%', left: '36%' }}>Login</button>
+          )};
         </ul>
 
         <header className='valign-wrapper'>
@@ -156,6 +184,27 @@ class PublicMain extends Component {
         <main>
           { routeComponents }
         </main>
+
+        <Modal id='loginModal' button='Login'>
+          <div className='row'>
+            <form className='col s12'>
+              <div className='row'>
+                <div id='loginModalErrors' className='col s12' />
+                <div className='input-field col s12'>
+                  <input id='email' type='email' name='email' className='validate' />
+                  <label htmlFor='email'>Email</label>
+                </div>
+                <div className='input-field col s12'>
+                  <input id='password' type='password' className='validate' />
+                  <label htmlFor='password'>Password</label>
+                </div>
+                <div className='right-align'>
+                  <LoginButton modalId='loginModal' />
+                </div>
+              </div>
+            </form>
+          </div>
+        </Modal>
       </HashRouter>
     )
   }
@@ -168,5 +217,6 @@ if ($('#public-root').length) {
 
   $(function () {
     M.Sidenav.init($('.sidenav'))
+    M.Modal.init($('.modal'))
   })
 }
