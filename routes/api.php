@@ -36,3 +36,7 @@ Route::post('guest/create', 'GuestController@store')->middleware('auth:api');
 // Events Routes
 Route::get('event/{id}', 'EventController@view');
 Route::post('event/create', 'EventController@store')->middleware('auth:api');
+
+// Home Routes
+Route::get('home', 'HomeController@index');
+Route::post('home/update', 'HomeController@update')->middleware('auth:api');

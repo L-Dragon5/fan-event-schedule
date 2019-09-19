@@ -21,21 +21,39 @@ Using Google's Material Design to create a clean user interface, different from 
 ## To-Do
 
 ### Admin-Side
-- Allow 'Add' FAB on list pages
-- Allow 'Edit' FAB on detail pages
-  - Replaced fiels with text inputs and WYSIWYG (Summernote)
+- Pages
+  - Schedule
+    - Add Event
+    - Edit Event
+    - Remove Event
+  - Guests
+    - Add Guest
+    - Edit Guest
+    - Remove Guest
+  - Exhibitors
+    - Add Exhibitor
+    - Edit Exhibitor
+    - Remove Exhibitor
+  - Rules
+    - Add Rule
+    - Edit Rule
+    - Remove Rule
+  - Maps
+    - Add Maps
+    - Edit Map Name
+    - Remove Maps
 
 ### Public-Side
-- General Info
 - Schedule
   - List Layout
+  - Single Location View
   - Layout Switcher
-  - Filter Options
 - Maps
   - Collection of Images
 
 ## Finished
 - ~~Buy Tickets (External Link)~~
+- ~~Home Page~~
 - ~~Schedules~~
   - ~~Grid Layout~~
   - ~~Single View~~
@@ -46,3 +64,5 @@ Using Google's Material Design to create a clean user interface, different from 
   - ~~List by Type~~
   - ~~Single View~~
 - ~~Login Functiionality~~
+- Admin-Side
+  - ~~Home Page~~

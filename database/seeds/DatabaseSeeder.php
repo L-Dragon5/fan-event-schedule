@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
                 KisetsuconPartnersTableSeeder::class,
                 KisetsuconGuestsTableSeeder::class,
                 KisetsuconEventsTableSeeder::class,
+                HomeTableSeeder::class,
             ]);
         } else {
             $this->call([
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 PartnersTableSeeder::class,
                 GuestsTableSeeder::class,
                 EventsTableSeeder::class,
+                HomeTableSeeder::class,
             ]);
         }
     }

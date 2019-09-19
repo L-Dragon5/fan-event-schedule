@@ -8,16 +8,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareSquare } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
-// Pages
+// List Pages
 import HomePage from './views/HomePage'
 import SchedulePage from './views/SchedulePage'
 import RulesPage from './views/RulesPage'
 import SellersPage from './views/SellersPage'
 import GuestsPage from './views/GuestsPage'
 
+// Detail Pages
+import SingleEvent from './views/single/SingleEvent'
+import SingleGuest from './views/single/SingleGuest'
+
 // Components
-import SingleEvent from './components/SingleEvent'
-import SingleGuest from './components/SingleGuest'
 import ExternalLink from './components/ExternalLink'
 import Modal from './components/Modal'
 import LoginForm from './components/auth/LoginForm'
@@ -41,31 +43,31 @@ class PublicMain extends Component {
     this.routes = [
       {
         path: '/',
-        render: (props) => <HomePage token={this.state.token} />
+        render: () => <HomePage token={this.state.token} />
       },
       {
         path: '/schedule',
-        render: (props) => <SchedulePage token={this.state.token} />
+        render: () => <SchedulePage token={this.state.token} />
       },
       {
         path: '/rules',
-        render: (props) => <RulesPage token={this.state.token} />
+        render: () => <RulesPage token={this.state.token} />
       },
       {
         path: '/exhibitors',
-        render: (props) => <SellersPage token={this.state.token} />
+        render: () => <SellersPage token={this.state.token} />
       },
       {
         path: '/guests',
-        render: (props) => <GuestsPage token={this.state.token} />
+        render: () => <GuestsPage token={this.state.token} />
       },
       {
         path: '/event/:eventId',
-        render: (props) => <SingleEvent token={this.state.token} />
+        render: ({ match }) => <SingleEvent eventId={match.params.eventId} token={this.state.token} />
       },
       {
         path: '/guest/:guestId',
-        render: (props) => <SingleGuest token={this.state.token} />
+        render: ({ match }) => <SingleGuest guestId={match.params.guestId} token={this.state.token} />
       }
     ]
   }

@@ -24,13 +24,13 @@ class LoginForm extends Component {
     formData.append('password', $('#password').val())
 
     axios.post('/api/login', formData, {
-      header: {
-        'content-type': 'mutlipart/form-data',
-        accept: 'application/json'
+      headers: {
+        'content-type': 'multipart/form-data',
+        Accept: 'application/json'
       }
     }).then((response) => {
       if (response.status === 200) {
-        $('#modal-close').trigger('click');
+        $('#modal-close').trigger('click')
         setTimeout(() => {
           this.passToken(response.data.token)
         }, 300)

@@ -9,18 +9,10 @@
         <title>{{ env('MIX_EVENT_NAME') }}</title>
 
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-        <script defer src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
         <script defer src="{{ mix('js/public-app.js') }}"></script>
     </head>
     <body>
         <div id="public-root"></div>
-        <script>
-        $(function () {
-            $('#summernote').summernote();
-        })
-        </script>
     </body>
 </html>
