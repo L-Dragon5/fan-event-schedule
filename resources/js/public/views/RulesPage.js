@@ -11,21 +11,6 @@ class RulesPage extends Component {
         })
       }
     })
-
-    // Load collapsibles in Materiallize
-    window.addEventListener('DOMContentLoaded', this.handleCollapsibles)
-    if (document.readyState !== 'loading') {
-      this.handleCollapsibles()
-    }
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('DOMContentLoaded', this.handleCollapsibles)
-  }
-
-  handleCollapsibles () {
-    const collapsibles = document.querySelector('.collapsible')
-    M.Collapsible.init(collapsibles)
   }
 
   render () {

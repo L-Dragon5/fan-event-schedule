@@ -20,42 +20,62 @@ import SingleEvent from './components/SingleEvent'
 import SingleGuest from './components/SingleGuest'
 import ExternalLink from './components/ExternalLink'
 import Modal from './components/Modal'
-import LoginButton from './components/auth/LoginButton'
+import LoginForm from './components/auth/LoginForm'
 
 library.add(fab, faShareSquare)
 
-const routes = [
-  {
-    path: '/',
-    component: HomePage
-  },
-  {
-    path: '/schedule',
-    component: SchedulePage
-  },
-  {
-    path: '/rules',
-    component: RulesPage
-  },
-  {
-    path: '/exhibitors',
-    component: SellersPage
-  },
-  {
-    path: '/guests',
-    component: GuestsPage
-  },
-  {
-    path: '/event/:eventId',
-    component: SingleEvent
-  },
-  {
-    path: '/guest/:guestId',
-    component: SingleGuest
-  }
-]
-
 class PublicMain extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      registrationLink: '',
+      socialFB: '',
+      socialTW: '',
+      socialIG: '',
+      socialWeb: '',
+      token: ''
+    }
+
+    this.onTokenUpdate = this.onTokenUpdate.bind(this)
+
+    this.routes = [
+      {
+        path: '/',
+        render: (props) => <HomePage token={this.state.token} />
+      },
+      {
+        path: '/schedule',
+        render: (props) => <SchedulePage token={this.state.token} />
+      },
+      {
+        path: '/rules',
+        render: (props) => <RulesPage token={this.state.token} />
+      },
+      {
+        path: '/exhibitors',
+        render: (props) => <SellersPage token={this.state.token} />
+      },
+      {
+        path: '/guests',
+        render: (props) => <GuestsPage token={this.state.token} />
+      },
+      {
+        path: '/event/:eventId',
+        render: (props) => <SingleEvent token={this.state.token} />
+      },
+      {
+        path: '/guest/:guestId',
+        render: (props) => <SingleGuest token={this.state.token} />
+      }
+    ]
+  }
+
+  onTokenUpdate (data) {
+    this.setState({
+      token: data
+    })
+  }
+
   componentDidMount () {
     // Get Registration Link
     axios.get('/api/setting/registration_link').then(response => {
@@ -77,23 +97,10 @@ class PublicMain extends Component {
         })
       }
     })
-
-    // Check if logged in
-    axios.get('/api/user/canEdit').then(response => {
-      if (response.data && response.data != null) {
-        this.setState({
-          loggedIn: true
-        })
-      } else {
-        this.setState({
-          loggedIn: false
-        })
-      }
-    })
   }
 
   render () {
-    const routeComponents = routes.map(({ path, component }, key) => <Route exact path={path} component={component} key={key} />)
+    const routeComponents = this.routes.map(({ path, render }, key) => <Route exact path={path} render={render} key={key} />)
 
     return (
       <HashRouter>
@@ -160,18 +167,13 @@ class PublicMain extends Component {
             </NavLink>
           </li>
 
-          { (this.state && this.state.loggedIn) ? (
-            <button
-              id='logout'
-              className='waves-effect waves-light btn red lighten-2'
-              style={{ position: 'absolute', bottom: '6%', left: '36%' }}>Logout</button>
-          ) : (
+          { this.state && !this.state.token &&
             <button
               id='login'
               data-target='loginModal'
-              className='waves-effect waves-light btn modal-trigger'
-              style={{ position: 'absolute', bottom: '6%', left: '36%' }}>Login</button>
-          )};
+              className='waves-effect waves-light btn btn-flat modal-trigger'
+              style={{ position: 'absolute', bottom: '11vh', left: '36%' }}>Log in</button>
+          }
         </ul>
 
         <header className='valign-wrapper'>
@@ -185,26 +187,11 @@ class PublicMain extends Component {
           { routeComponents }
         </main>
 
-        <Modal id='loginModal' button='Login'>
-          <div className='row'>
-            <form className='col s12'>
-              <div className='row'>
-                <div id='loginModalErrors' className='col s12' />
-                <div className='input-field col s12'>
-                  <input id='email' type='email' name='email' className='validate' />
-                  <label htmlFor='email'>Email</label>
-                </div>
-                <div className='input-field col s12'>
-                  <input id='password' type='password' className='validate' />
-                  <label htmlFor='password'>Password</label>
-                </div>
-                <div className='right-align'>
-                  <LoginButton modalId='loginModal' />
-                </div>
-              </div>
-            </form>
-          </div>
-        </Modal>
+        { this.state && !this.state.token &&
+          <Modal id='loginModal' button='Login'>
+            <LoginForm onTokenUpdate={this.onTokenUpdate} />
+          </Modal>
+        }
       </HashRouter>
     )
   }
@@ -218,5 +205,7 @@ if ($('#public-root').length) {
   $(function () {
     M.Sidenav.init($('.sidenav'))
     M.Modal.init($('.modal'))
+    M.FloatingActionButton.init($('.fixed-action-btn'))
+    M.Collapsible.init($('.collapsible'))
   })
 }

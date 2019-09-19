@@ -21,8 +21,6 @@ Using Google's Material Design to create a clean user interface, different from 
 ## To-Do
 
 ### Admin-Side
-- Login/Logout
-- Check if Authorized
 - Allow 'Add' FAB on list pages
 - Allow 'Edit' FAB on detail pages
   - Replaced fiels with text inputs and WYSIWYG (Summernote)
@@ -47,3 +45,4 @@ Using Google's Material Design to create a clean user interface, different from 
 - ~~Guests~~
   - ~~List by Type~~
   - ~~Single View~~
+- ~~Login Functiionality~~

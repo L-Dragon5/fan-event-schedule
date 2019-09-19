@@ -1,0 +1,9 @@
+.modal {
+  &-errors {
+    display: none;
+    background-color: #ffcdd2;
+    padding: 1rem !important;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+}

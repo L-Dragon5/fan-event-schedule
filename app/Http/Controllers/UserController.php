@@ -30,19 +30,6 @@ class UserController extends Controller
     }
 
     /**
-     * Logout an authenticated user
-     */
-    public function logout(Request $request) {
-        $value = $request->bearerToken();
-        $id = (new Parser())->parse($value)->getHeader('jti');
-        $token = $request->user()->token->find($id);
-        $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
-
-        return response()->json($response, $this->successStatus);
-    }
-
-    /**
      * Register a user account
      */
     public function register(Request $request) {

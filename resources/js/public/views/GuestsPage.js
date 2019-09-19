@@ -1,7 +1,14 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import $ from 'jquery'
 
 class GuestsPage extends Component {
+  constructor (props) {
+    super(props)
+
+    this.token = props.token
+  }
+
   componentDidMount () {
     // Get all guests
     axios.get('/api/guests').then(response => {
@@ -39,6 +46,14 @@ class GuestsPage extends Component {
               </ul>
             )
           })
+        }
+
+        { this.token &&
+          <div className='fixed-action-btn'>
+            <a className='btn-floating btn-large red'>
+              <i className='large material-icons'>mode_edit</i>
+            </a>
+          </div>
         }
       </div>
     )

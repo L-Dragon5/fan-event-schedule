@@ -14,8 +14,6 @@
 // User Routes
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register')->middleware('checkIp');
-Route::get('logout', 'UserController@logout')->middleware('auth:api');
-Route::get('user/canEdit', function (Request $request) { return Auth::guard('api')->user(); });
 
 // Schedule Routes
 Route::get('schedule', 'ScheduleController@index');
@@ -33,6 +31,7 @@ Route::get('sellers', 'SellerController@index');
 // Guests Routes
 Route::get('guests', 'GuestController@index');
 Route::get('guest/{id}', 'GuestController@view');
+Route::post('guest/create', 'GuestController@store')->middleware('auth:api');
 
 // Events Routes
 Route::get('event/{id}', 'EventController@view');
