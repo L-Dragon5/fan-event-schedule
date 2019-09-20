@@ -45,11 +45,12 @@ Using Google's Material Design to create a clean user interface, different from 
 
 ### Public-Side
 - Schedule
-  - List Layout
   - Single Location View
-
 - Maps
   - Collection of Images
+- My Schedule
+  - Ability to add events to personal schedule
+    - Probably use localStorage to store
 
 ## Finished
 - ~~Buy Tickets (External Link)~~
