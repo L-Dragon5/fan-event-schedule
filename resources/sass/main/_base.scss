@@ -1,5 +1,4 @@
 html {
-  font-size: 62.5%; /* Sets up the Base 10 stuff for rem */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -7,37 +6,53 @@ header,
 main,
 footer {
   padding-left: 0;
-  font-size: 1.6rem;
+  font-size: 1rem;
 
   @include respond-above(md) {
     padding-left: 300px;
   }
 }
 
+main {
+  max-height: calc(100vh - 56px);
+  overflow: auto;
+
+  @include respond-above(md) {
+    max-height: 100vh;
+  }
+
+  & > div {
+    padding: 0.9375rem;
+  }
+}
+
+.page-title {
+  margin: 0 0 1.424rem;
+
+  @include respond-below(sm) {
+    display: none !important;
+  }
+}
+
 header {
   top: 0;
   left: 0;
-  height: 5rem;
   background-color: $header-bg-color;
-  box-shadow: 0 0 10px 0 #888;
+  height: 56px!important;
 
   & > a i.material-icons {
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: white;
-    padding: 1rem;
+    padding: 0.625rem;
   }
 
   & > span {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   @include respond-above(md) {
     display: none !important;
   }
-}
-
-main > div {
-  padding: 1.5rem;
 }
 
 strong {
@@ -83,8 +98,4 @@ li.collection-item {
       background-color: #ffcc80;
     }
   }
-}
-
-.material-tooltip {
-  font-size: 1.6rem;
 }

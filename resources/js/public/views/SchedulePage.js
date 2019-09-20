@@ -52,8 +52,8 @@ class SchedulePage extends Component {
 
     return (
       <div className='schedule-page'>
-        <div className='row'>
-          <h2 className='col s12 m8'>Schedule</h2>
+        <div className='row' style={{ marginBottom: 0 }}>
+          <h2 className='col s12 m8 page-title'>Schedule</h2>
           <div className='input-field col s12 m4'>
             <select value={this.state.scheduleStyle} onChange={this.handleChange}>
               <option value='grid'>Grid</option>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import ScheduleGridRoom from './ScheduleGridRoom'
+import $ from 'jquery'
 
 class ScheduleGrid extends Component {
   constructor (props) {
@@ -12,15 +13,7 @@ class ScheduleGrid extends Component {
 
     this.lineWidth = 154
     this.defaultBlockHeight = 72
-  }
-
-  updateLines () {
-    const gridItemCount = document.querySelectorAll('.schedule__grid__item').length
-    const newLineWidth = gridItemCount * this.lineWidth
-    const labelLines = document.querySelectorAll('.schedule__label__line')
-    labelLines.forEach((ele, index) => {
-      ele.style.width = newLineWidth + 'px'
-    })
+    this.moveLabels = this.moveLabels.bind(this)
   }
 
   componentDidMount () {
@@ -39,44 +32,75 @@ class ScheduleGrid extends Component {
         schedule: response.data
       })
     })
+
+    $('#grid').on('scroll', this.moveLabels)
+    setTimeout(() => {
+      $('.schedule-grid__label > span:first-of-type').each((index, element) => {
+        $(element).data('initialLeft', parseFloat($(element).css('left')))
+      })
+    })
+  }
+
+  componentWillUnmount () {
+    $('#grid').off('scroll')
   }
 
   componentDidUpdate () {
     this.updateLines()
   }
 
+  moveLabels () {
+    const scrollLeftAmt = $('#grid').scrollLeft()
+    const scrollTopAmt = $('#grid').scrollTop()
+
+    $('#labels-bg').css('left', scrollLeftAmt)
+    $('.schedule-grid__label > span:first-of-type').each((index, element) => {
+      $(element).css('left', $(element).data('initialLeft') + scrollLeftAmt)
+    })
+    $('.schedule-grid__grid__item__header').css('top', scrollTopAmt)
+  }
+
+  updateLines () {
+    const gridItemCount = document.querySelectorAll('.schedule-grid__grid__item').length
+    const newLineWidth = gridItemCount * this.lineWidth
+    const labelLines = document.querySelectorAll('.schedule-grid__label__line')
+    labelLines.forEach((ele, index) => {
+      ele.style.width = newLineWidth + 'px'
+    })
+  }
+
   render () {
     const schedule = this.state.schedule
     return (
       <div>
-        <div className='schedule'>
-          <div className='schedule__container'>
-            <div className='schedule__labels'>
-              <div className='schedule__label' />
-              <div className='schedule__label'><span>10AM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>11AM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>12PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>1PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>2PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>3PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>4PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>5PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>6PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>7PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>8PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>9PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>10PM</span><span className='schedule__label__line' /></div>
-              <div className='schedule__label'><span>11PM</span><span className='schedule__label__line' /></div>
+        <div id='grid' className='schedule-grid'>
+          <div className='schedule-grid__container'>
+            <div id='labels-bg' style={{ flex: 'none', position: 'absolute', height: '100%', width: '62px', zIndex: '4', backgroundColor: '#f2f2f2' }} />
+            <div className='schedule-grid__labels'>
+              <div className='schedule-grid__label' />
+              <div className='schedule-grid__label'><span>10AM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>11AM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>12PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>1PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>2PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>3PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>4PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>5PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>6PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>7PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>8PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>9PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'><span>10PM</span><span className='schedule-grid__label__line' /></div>
             </div>
-            <div className='schedule__grid'>
+            <div className='schedule-grid__grid'>
               { this.state && this.state.eventStartTime && schedule
                 ? (Object.entries(schedule).map((k, index) => {
                   const room = k[0]
                   const roomList = k[1]
 
                   return (
-                    <div className='schedule__grid__item' key={room}>
-                      <div className='schedule__grid__item__header'><span>{room}</span></div>
+                    <div className='schedule-grid__grid__item' key={room}>
+                      <div className='schedule-grid__grid__item__header'><span>{room}</span></div>
                       <ScheduleGridRoom
                         key={room}
                         rooms={roomList}

@@ -23,15 +23,15 @@ class GuestsPage extends Component {
   render () {
     return (
       <div>
-        <h2>Guests</h2>
+        <h2 className='page-title'>Guests</h2>
         { this.state && this.state.guests &&
           Object.entries(this.state.guests).map((k, index) => {
             const category = k[0]
             const list = k[1]
 
             return (
-              <ul key={index} className='collection with-header' style={{ marginBottom: '5rem' }}>
-                <li key={category} className='collection-header'><h4>{category}</h4></li>
+              <ul key={index} className='collection with-header' style={{ marginBottom: '3.125rem' }}>
+                <li key={category} className='collection-header'><h5>{category}</h5></li>
                 {
                   Object.entries(list).map((k, index) => {
                     const guest = k[1]

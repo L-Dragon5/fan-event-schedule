@@ -110,7 +110,7 @@ class PublicMain extends Component {
         <ul id='sidebar' className='sidenav sidenav-fixed'>
           <li>
             <div className='user-view'>
-              <span style={{ fontSize: '2.2rem' }}>{process.env.MIX_EVENT_NAME}</span>
+              <span style={{ fontSize: '1.375rem' }}>{process.env.MIX_EVENT_NAME}</span>
               <div>
                 { this.state && this.state.socialFB &&
                   <ExternalLink href={this.state.socialFB} icon>
@@ -179,7 +179,7 @@ class PublicMain extends Component {
           }
         </ul>
 
-        <header className='valign-wrapper'>
+        <header className='valign-wrapper navbar-fixed z-depth-1'>
           <a href='#' data-target='sidebar' className='sidenav-trigger'>
             <i className='material-icons'>menu</i>
           </a>

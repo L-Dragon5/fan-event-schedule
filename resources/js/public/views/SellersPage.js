@@ -17,7 +17,7 @@ class SellersPage extends Component {
   render () {
     return (
       <div>
-        <h2>Exhibitors</h2>
+        <h2 className='page-title'>Exhibitors</h2>
         { this.state && this.state.sellers &&
           Object.entries(this.state.sellers).map((k, index) => {
             const category = k[0]
@@ -25,7 +25,7 @@ class SellersPage extends Component {
 
             return (
               <ul key={index} className='collection with-header' style={{ marginBottom: '5rem' }}>
-                <li key={category} className='collection-header'><h4>{category}</h4></li>
+                <li key={category} className='collection-header'><h5>{category}</h5></li>
                 {
                   Object.entries(list).map((k, index) => {
                     const seller = k[1]

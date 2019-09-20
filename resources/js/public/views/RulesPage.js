@@ -31,7 +31,7 @@ class RulesPage extends Component {
   render () {
     return (
       <div>
-        <h2>Rules & Policies</h2>
+        <h2 className='page-title'>Rules & Policies</h2>
         <ul className='collapsible'>
           { this.state && this.state.rules &&
             Object.entries(this.state.rules).map((entry, index) => {

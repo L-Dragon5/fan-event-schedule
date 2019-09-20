@@ -8,11 +8,11 @@ class ExternalLink extends Component {
     this.className = props.className
     this.style = {
       color: 'rgba(0,0,0,0.87)',
-      marginRight: '0.75rem'
+      marginRight: '0.5rem'
     }
 
     if (props.icon) {
-      this.style.fontSize = '2.75rem'
+      this.style.fontSize = '1.75rem'
       this.style.color = 'rgba(0,0,0,0.65)'
     }
   }

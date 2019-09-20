@@ -1,125 +1,133 @@
 .schedule {
-  background-color: #f2f2f2;
-  overflow: auto;
-  max-height: calc(100vh - 178px);
-
-  @include respond-above(md) {
-    max-height: calc(100vh - 128px);
-  }
-
-  &__container {
-    display: flex;
-  }
-
-  &__labels {
-    flex: none;
-    width: 70px;
-    user-select: none;
-  }
-
-  &__label {
-    height: 75px;
-    vertical-align: top !important;
-    padding: 0;
-    position: relative;
-
-    &:first-of-type {
-      height: 100px;
+  &-grid {
+    background-color: #f2f2f2;
+    overflow: auto;
+    height: calc(100vh - 181px);
+  
+    @include respond-above(md) {
+      height: calc(100vh - 132px);
     }
-
-    & > span:first-of-type {
-      position: absolute;
-      right: 0.5rem;
-      top: -1rem;
-      color: #929292;
-    }
-
-    &__line {
-      content: '';
-      height: 3px;
-      background-color: #f2f2f2;
-      position: absolute;
-      left: 70px;
-    }
-  }
-
-  &__grid {
-    display: flex;
-    flex: 1 0 auto;
-
-    &__item {
-      flex: 0 0 150px;
+  
+    &__container {
       display: flex;
-      flex-direction: column;
-      margin: 0 2px;
-
-      &__header {
-        flex: none;
-        height: 100px;
-        width: 100%;
-        text-align: center;
+      position: relative;
+    }
+  
+    &__labels {
+      flex: none;
+      width: 60px;
+      user-select: none;
+      position: relative;
+    }
+  
+    &__label {
+      height: 75px;
+      vertical-align: top !important;
+      padding: 0;
+      position: relative;
+  
+      &:first-of-type {
+        height: 65px;
+      }
+  
+      & > span:first-of-type {
+        position: absolute;
+        right: 0.3125rem;
+        top: -0.625rem;
+        z-index: 5;
+        font-weight: 600;
+      }
+  
+      &__line {
+        content: '';
+        height: 3px;
         background-color: #f2f2f2;
-        text-transform: uppercase;
-        padding: 12px;
-        font-weight: bold;
-        box-sizing: border-box;
-        position: relative;
-
+        position: absolute;
+        left: 60px;
+        z-index: 1;
+      }
+    }
+  
+    &__grid {
+      display: flex;
+      flex: 1 0 auto;
+  
+      &__item {
+        flex: 0 0 150px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 2px;
+  
+        &__header {
+          flex: none;
+          height: 65px;
+          width: 100%;
+          text-align: center;
+          background-color: #f2f2f2;
+          text-transform: uppercase;
+          padding: 12px;
+          font-weight: bold;
+          box-sizing: border-box;
+          position: relative;
+          z-index: 3;
+  
+          & > span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+          }
+        }
+  
+        &::after {
+          flex: 1 0 auto;
+          background-color: white;
+          content: '';
+        }
+      }
+    }
+  
+    &__event {
+      background-color: lightblue;
+      padding: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 2;
+  
+      &__title {
         & > span {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          white-space: nowrap;
+          text-align: center;
+          width: 90%;
         }
       }
+    }
+  }
 
-      &::after {
-        flex: 1 0 auto;
-        background-color: white;
-        content: '';
+  &-list {
+    &__item {
+      cursor: pointer;
+  
+      &__title {
+        font-size: 1.5rem;
+        line-height: 1.625rem;
+      }
+  
+      &__time {
+        font-size: 1rem;
+        font-style: italic;
+        padding-top: 0!important;
       }
     }
   }
 
-  &__event {
-    background-color: lightblue;
-    padding: 2px;
-    overflow: hidden;
-    cursor: pointer;
-
-    &__title {
-      & > span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        width: 90%;
-      }
-    }
-  }
-}
-
-.schedule-page {
-  & h2 {
-    margin-top: 0;
-  }
-}
-
-.schedule-list {
-  &__item {
-    cursor: pointer;
-
-    &__title {
-      font-size: 2.4rem;
-      line-height: 2.6rem;
-    }
-
-    &__time {
-      font-size: 1.6rem;
-      font-style: italic;
-      padding-top: 0!important;
+  &-page {
+    & h2 {
+      margin-top: 0;
     }
   }
 }

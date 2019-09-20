@@ -71,10 +71,10 @@ class ScheduleGridEvent extends Component {
       <div
         onClick={this.handleClick}
         style={itemStyle}
-        className='schedule__event tooltipped'
+        className='schedule-grid__event tooltipped'
         data-position='top'
         data-tooltip={timeRange}>
-        <div className='schedule__event__title'>
+        <div className='schedule-grid__event__title'>
           <span>{this.event.title}</span>
         </div>
       </div>
