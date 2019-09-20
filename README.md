@@ -47,7 +47,7 @@ Using Google's Material Design to create a clean user interface, different from 
 - Schedule
   - List Layout
   - Single Location View
-  - Layout Switcher
+
 - Maps
   - Collection of Images
 
@@ -57,6 +57,7 @@ Using Google's Material Design to create a clean user interface, different from 
 - ~~Schedules~~
   - ~~Grid Layout~~
   - ~~Single View~~
+  - ~~Layout Switcher~~
 - ~~Social Media Links~~
 - ~~Exhibitors~~
 - ~~Rules & Polcies~~

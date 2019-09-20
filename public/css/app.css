@@ -461,6 +461,10 @@ li.collection-item > a:hover {
   background-color: #ffcc80;
 }
 
+.material-tooltip {
+  font-size: 1.6rem;
+}
+
 .schedule {
   background-color: #f2f2f2;
   overflow: auto;
@@ -558,18 +562,32 @@ li.collection-item > a:hover {
   cursor: pointer;
 }
 
-.schedule__event__title {
+.schedule__event__title > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-}
-
-.schedule__event__time {
-  text-align: center;
-  font-style: italic;
-  font-size: 1.4rem;
+  width: 90%;
 }
 
 .schedule-page h2 {
   margin-top: 0;
+}
+
+.schedule-list__item {
+  cursor: pointer;
+}
+
+.schedule-list__item__title {
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+}
+
+.schedule-list__item__time {
+  font-size: 1.6rem;
+  font-style: italic;
+  padding-top: 0 !important;
 }
 
 .event__time-and-date span {

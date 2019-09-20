@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import M from 'materialize-css'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import { Route, NavLink, HashRouter } from 'react-router-dom'
@@ -208,6 +209,5 @@ if ($('#public-root').length) {
     M.Sidenav.init($('.sidenav'))
     M.Modal.init($('.modal'))
     M.FloatingActionButton.init($('.fixed-action-btn'))
-    M.Collapsible.init($('.collapsible'))
   })
 }

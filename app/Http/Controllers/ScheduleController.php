@@ -9,9 +9,9 @@ use App\Event;
 class ScheduleController extends Controller
 {
     /**
-     * Retrieve built array of schedule listing organized by room location
+     * Retrieve built array of schedule listing organized by room location for grid layout.
      */
-    public function index() {
+    public function byGrid() {
         $return = [];
         $events = Event::all()->sortBy('time_start');
 
@@ -39,5 +39,27 @@ class ScheduleController extends Controller
         }
 
         return $return;
+    }
+
+    /**
+     * Retrieve array of schedule listing by time, earliest to latest.
+     */
+    public function byTime() {
+        $return = [];
+        $events = Event::all()->sortBy('time_start');
+        foreach($events as $event) {
+            $return[] = $event;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Retrieve array of schedule listing by singular location in grid layout.
+     */
+    public function byLocation($location) {
+        $events = Event::where('location_id', $location)->orderBy('time_start')->get();
+
+        return $events;
     }
 }

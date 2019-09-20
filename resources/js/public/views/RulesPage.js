@@ -1,4 +1,6 @@
 import axios from 'axios'
+import M from 'materialize-css'
+import $ from 'jquery'
 import React, { Component } from 'react'
 
 class RulesPage extends Component {
@@ -11,6 +13,19 @@ class RulesPage extends Component {
         })
       }
     })
+
+    window.addEventListener('DOMContentLoaded', this.handleInit)
+    if (document.readyState !== 'loading') {
+      this.handleInit()
+    }
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('DOMContentLoaded', this.handleInit)
+  }
+
+  handleInit () {
+    M.Collapsible.init($('.collapsible'))
   }
 
   render () {

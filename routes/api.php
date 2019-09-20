@@ -16,7 +16,9 @@ Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register')->middleware('checkIp');
 
 // Schedule Routes
-Route::get('schedule', 'ScheduleController@index');
+Route::get('schedule/byGrid', 'ScheduleController@byGrid');
+Route::get('schedule/byTime', 'ScheduleController@byTime');
+Route::get('schedule/{location}', 'ScheduleController@byLocation');
 
 // Setting Routes
 Route::get('setting/{key}', 'SettingController@getByKey');
