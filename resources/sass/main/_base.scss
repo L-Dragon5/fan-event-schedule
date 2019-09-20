@@ -14,11 +14,11 @@ footer {
 }
 
 main {
-  max-height: calc(100vh - 56px);
+  height: calc(100vh - 56px);
   overflow: auto;
 
   @include respond-above(md) {
-    max-height: 100vh;
+    height: 100vh;
   }
 
   & > div {
@@ -62,7 +62,7 @@ strong {
 .responsive-text {
   font-size: 5vw;
 
-  @include respond-above(xs) {
+  @include respond-below(sm) {
     font-size: 3vw;
   }
 

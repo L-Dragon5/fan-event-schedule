@@ -3,8 +3,7 @@ import M from 'materialize-css'
 import $ from 'jquery'
 
 import ScheduleGrid from '../components/schedule/grid/ScheduleGrid'
-import ScheduleListByTime from '../components/schedule/listbytime/ScheduleListByTime'
-import ScheduleSingle from '../components/schedule/single/ScheduleSingle'
+import ScheduleList from '../components/schedule/list/ScheduleList'
 
 class SchedulePage extends Component {
   constructor (props) {
@@ -42,10 +41,8 @@ class SchedulePage extends Component {
 
   render () {
     let schedule = null
-    if (this.state.scheduleStyle === 'listByTime') {
-      schedule = <ScheduleListByTime />
-    } else if (this.state.scheduleStyle === 'single') {
-      schedule = <ScheduleSingle />
+    if (this.state.scheduleStyle === 'list') {
+      schedule = <ScheduleList />
     } else {
       schedule = <ScheduleGrid />
     }
@@ -57,8 +54,7 @@ class SchedulePage extends Component {
           <div className='input-field col s12 m4'>
             <select value={this.state.scheduleStyle} onChange={this.handleChange}>
               <option value='grid'>Grid</option>
-              <option value='listByTime'>List by Time</option>
-              <option value='single'>Single Location</option>
+              <option value='list'>List</option>
             </select>
             <label>Schedule Layout</label>
           </div>

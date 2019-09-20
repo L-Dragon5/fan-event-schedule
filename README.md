@@ -42,10 +42,9 @@ Using Google's Material Design to create a clean user interface, different from 
     - Add Maps
     - Edit Map Name
     - Remove Maps
+  - Add/Edit/Remove Locations
 
 ### Public-Side
-- Schedule
-  - Single Location View
 - Maps
   - Collection of Images
 - My Schedule
@@ -57,7 +56,7 @@ Using Google's Material Design to create a clean user interface, different from 
 - ~~Home Page~~
 - ~~Schedules~~
   - ~~Grid Layout~~
-  - ~~Single View~~
+  - ~~List Layout~~
   - ~~Layout Switcher~~
 - ~~Social Media Links~~
 - ~~Exhibitors~~

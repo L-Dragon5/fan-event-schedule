@@ -381,13 +381,13 @@ footer {
 }
 
 main {
-  max-height: calc(100vh - 56px);
+  height: calc(100vh - 56px);
   overflow: auto;
 }
 
 @media (min-width: 993px) {
   main {
-    max-height: 100vh;
+    height: 100vh;
   }
 }
 
@@ -434,6 +434,12 @@ strong {
 
 .responsive-text {
   font-size: 5vw;
+}
+
+@media (max-width: 599px) {
+  .responsive-text {
+    font-size: 3vw;
+  }
 }
 
 @media (min-width: 601px) {
