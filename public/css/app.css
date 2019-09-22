@@ -432,28 +432,6 @@ strong {
   font-weight: bold;
 }
 
-.responsive-text {
-  font-size: 5vw;
-}
-
-@media (max-width: 599px) {
-  .responsive-text {
-    font-size: 3vw;
-  }
-}
-
-@media (min-width: 601px) {
-  .responsive-text {
-    font-size: 2vw;
-  }
-}
-
-@media (min-width: 1201px) {
-  .responsive-text {
-    font-size: 1.3vw;
-  }
-}
-
 li.collection-item {
   padding: 0 !important;
 }
@@ -477,6 +455,10 @@ li.collection-item > a:link {
 li.collection-item > a:active,
 li.collection-item > a:hover {
   background-color: #ffcc80;
+}
+
+.divider {
+  margin-top: 1rem;
 }
 
 .schedule-grid {

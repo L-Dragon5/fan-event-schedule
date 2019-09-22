@@ -16,7 +16,7 @@ class CreateMapsTable extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
-            $table->binary('image')->nullable();
+            $table->mediumText('image')->nullable();
         });
     }
 

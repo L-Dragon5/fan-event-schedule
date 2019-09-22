@@ -15,6 +15,7 @@ import SchedulePage from './views/SchedulePage'
 import RulesPage from './views/RulesPage'
 import SellersPage from './views/SellersPage'
 import GuestsPage from './views/GuestsPage'
+import MapsPage from './views/MapsPage'
 
 // Detail Pages
 import SingleEvent from './views/single/SingleEvent'
@@ -61,6 +62,10 @@ class PublicMain extends Component {
       {
         path: '/guests',
         render: () => <GuestsPage token={this.state.token} />
+      },
+      {
+        path: '/maps',
+        render: () => <MapsPage token={this.state.token} />
       },
       {
         path: '/event/:eventId',
@@ -167,6 +172,11 @@ class PublicMain extends Component {
           <li>
             <NavLink to='/rules' className='waves-effect sidenav-close'>
               <i className='material-icons'>list_alt</i>Rules
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/maps' className='wave-effect sidenav-close'>
+              <i className='material-icons'>map</i>Maps
             </NavLink>
           </li>
 

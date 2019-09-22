@@ -31,7 +31,7 @@ class ScheduleList extends Component {
     })
 
     var url = ''
-    if(this.state.filterLocation === 'all') {
+    if (this.state.filterLocation === 'all') {
       url = 'api/schedule/byTime'
     } else {
       url = 'api/schedule/byTime/' + this.state.filterLocation
@@ -57,7 +57,7 @@ class ScheduleList extends Component {
 
   handleLocationChange (e) {
     var url = ''
-    if(e.target.value === 'all') {
+    if (e.target.value === 'all') {
       url = 'api/schedule/byTime'
     } else {
       url = 'api/schedule/byTime/' + e.target.value
@@ -84,9 +84,9 @@ class ScheduleList extends Component {
     return (
       <div>
         <div className='input-field col s12'>
-          { this.state && locations && 
+          { this.state && locations &&
             <div>
-              <select value={this.state.filterLocation} onChange={this.handleLocationChange}>
+              <select defaultValue={this.state.filterLocation} onChange={this.handleLocationChange}>
                 <option value='all'>All</option>
                 {
                   Object.entries(locations).map((k, index) => {

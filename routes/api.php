@@ -45,3 +45,10 @@ Route::post('event/create', 'EventController@store')->middleware('auth:api');
 // Home Routes
 Route::get('home', 'HomeController@index');
 Route::post('home/update', 'HomeController@update')->middleware('auth:api');
+
+// Map Routes
+Route::get('maps', 'MapController@index');
+Route::get('map/{id}', 'MapController@view');
+Route::post('map/create', 'MapController@store')->middleware('auth:api');
+Route::post('map/update/{id}', 'MapController@update')->middleware('auth:api');
+Route::get('map/destroy/{id}', 'MapController@destroy')->middleware('auth:api');

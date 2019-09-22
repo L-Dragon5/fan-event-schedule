@@ -59,22 +59,6 @@ strong {
   font-weight: bold;
 }
 
-.responsive-text {
-  font-size: 5vw;
-
-  @include respond-below(sm) {
-    font-size: 3vw;
-  }
-
-  @include respond-above(sm) {
-    font-size: 2vw;
-  }
-
-  @include respond-above(lg) {
-    font-size: 1.3vw;
-  }
-}
-
 li.collection-item {
   padding: 0 !important;
 
@@ -98,4 +82,8 @@ li.collection-item {
       background-color: #ffcc80;
     }
   }
+}
+
+.divider {
+  margin-top: 1rem;
 }

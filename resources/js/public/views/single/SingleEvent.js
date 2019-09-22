@@ -36,7 +36,7 @@ class SingleEvent extends Component {
           </div>
           <div className='event__location center-align'><strong>Location:</strong> {this.state.event.location}</div>
           <div className='divider' />
-          <p className='event__description responsive-text'>{this.state.event.description}</p>
+          <p className='event__description flow-text'>{this.state.event.description}</p>
 
           {/* this.state.event.event_type_names */}
         </div>

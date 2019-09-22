@@ -7,17 +7,22 @@ class HomePage extends Component {
     super(props)
     this.state = {
       content: '',
+      saveData: '',
       editing: false
     }
 
     this.token = props.token
+    this.getHomePageData = this.getHomePageData.bind(this)
     this.editPage = this.editPage.bind(this)
     this.savePage = this.savePage.bind(this)
     this.saveData = this.saveData.bind(this)
   }
 
   componentDidMount () {
-    // Get home page text
+    this.getHomePageData()
+  }
+
+  getHomePageData () {
     axios.get('/api/home').then(response => {
       if (response.data != null) {
         this.setState({
@@ -35,7 +40,7 @@ class HomePage extends Component {
 
   savePage () {
     const formData = new FormData()
-    formData.append('content', this.state.content)
+    formData.append('content', this.state.saveData)
 
     axios.post('/api/home/update', formData, {
       headers: {
@@ -54,13 +59,16 @@ class HomePage extends Component {
       .catch((error) => {
         console.log(error)
       })
+      .then(() => {
+        this.getHomePageData()
+      })
   }
 
   saveData (data) {
     const obj = JSON.parse(data)
     if (obj.content) {
       this.setState({
-        content: obj.content
+        saveData: obj.content
       })
     }
   }

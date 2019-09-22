@@ -48,7 +48,7 @@ class SingleGuest extends Component {
             }
           </div>
           <div className='divider' />
-          <p className='guest__description responsive-text'>{this.state.guest.description}</p>
+          <p className='guest__description flow-text'>{this.state.guest.description}</p>
         </div>
       )
     } else {
