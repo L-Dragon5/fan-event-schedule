@@ -3,6 +3,14 @@ import React, { Component } from 'react'
 import ExternalLink from '../components/ExternalLink'
 
 class ExhibitorsPage extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      exhibitors: []
+    }
+  }
+
   componentDidMount () {
     axios.get('/api/exhibitors').then(response => {
       if (response.data != null) {
@@ -19,7 +27,7 @@ class ExhibitorsPage extends Component {
     return (
       <div>
         <h2 className='page-title'>Exhibitors</h2>
-        { exhibitors &&
+        { this.state && exhibitors &&
           Object.entries(exhibitors).map((k, index) => {
             const category = k[0]
             const list = k[1]
