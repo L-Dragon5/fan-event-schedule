@@ -27,9 +27,6 @@ Using Google's Material Design to create a clean user interface, different from 
     - Edit Event
     - Remove Event
     - Add/Edit/Remove Locations
-  - Guests
-    - Edit Guest
-    - Remove Guest
   - Exhibitors
     - Add Exhibitor
     - Edit Exhibitor
@@ -39,9 +36,9 @@ Using Google's Material Design to create a clean user interface, different from 
     - Edit Rule
     - Remove Rule
   - Maps
-    - Add Maps
+    - Add Map
     - Edit Map Name
-    - Remove Maps
+    - Remove Map
 
 ### Public-Side
 - My Schedule
@@ -65,5 +62,7 @@ Using Google's Material Design to create a clean user interface, different from 
 - ~~Maps~~
 - Admin-Side
   - ~~Home Page~~
-  - Guests
+  - ~~Guests~~
     - ~~Add Guest~~
+    - ~~Edit Guest~~
+    - ~~Remove Guest~~

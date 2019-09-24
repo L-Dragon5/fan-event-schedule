@@ -5,7 +5,6 @@ import M from 'materialize-css'
 
 import Modal from '../components/Modal'
 import GuestAddForm from '../components/forms/GuestAddForm'
-import { runInThisContext } from 'vm'
 
 class GuestsPage extends Component {
   constructor (props) {

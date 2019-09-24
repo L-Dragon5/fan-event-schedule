@@ -39,7 +39,12 @@ class GuestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function view(Request $request, $id) {
-        $guest = Guest::find($id);
+        try {
+            $guest = Guest::findOrFail($id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return return_json_message('Invalid guest id', 401);
+        }
+
         return $guest;
     }
 
@@ -101,19 +106,23 @@ class GuestController extends Controller
             return return_json_message($validator->errors(), $this->errorStatus);
         }
 
-        $guest = Guest::find(1);
-        $guest->name = $request->name;
-        $guest->category = $request->category;
-        $guest->description = $request->description;
-        $guest->social_fb = $request->social_fb;
-        $guest->social_tw = $request->social_tw;
-        $guest->social_ig = $request->social_ig;
-        $success = $guest->save();
+        try {
+            $guest = Guest::findOrFail($id);
+            $guest->name = $request->name;
+            $guest->category = $request->category;
+            $guest->description = $request->description;
+            $guest->social_fb = $request->social_fb;
+            $guest->social_tw = $request->social_tw;
+            $guest->social_ig = $request->social_ig;
+            $success = $guest->save();
 
-        if ($success) {
-            return return_json_message('Updated succesfully', $this->successStatus);
-        } else {
-            return return_json_message('Something went wrong while trying to update', 401);
+            if ($success) {
+                return return_json_message('Updated succesfully', $this->successStatus);
+            } else {
+                return return_json_message('Something went wrong while trying to update', 401);
+            }
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return return_json_message('Invalid guest id', 401);
         }
     }
 

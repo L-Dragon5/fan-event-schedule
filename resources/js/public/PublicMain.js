@@ -37,7 +37,7 @@ class PublicMain extends Component {
       socialTW: '',
       socialIG: '',
       socialWeb: '',
-      token: ''
+      token: (sessionStorage.getItem('token')) ? sessionStorage.getItem('token') : ''
     }
 
     this.onTokenUpdate = this.onTokenUpdate.bind(this)
@@ -82,6 +82,8 @@ class PublicMain extends Component {
     this.setState({
       token: data
     })
+
+    sessionStorage.setItem('token', data)
   }
 
   componentDidMount () {

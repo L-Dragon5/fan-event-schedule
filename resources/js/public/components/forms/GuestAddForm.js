@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import $ from 'jquery'
+import M from 'materialize-css'
 
 import RichTextEditor from '../RichTextEditor'
 
@@ -35,6 +36,7 @@ class GuestAddForm extends Component {
       }
     }).then((response) => {
       if (response.status === 200) {
+        M.toast({ html: response.data.message })
         $('#modal-close').trigger('click')
         this.props.unmount()
       }

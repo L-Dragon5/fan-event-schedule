@@ -13,7 +13,7 @@ class RichTextEditor extends Component {
       editorState: ''
     }
 
-    const content = (props.content !== undefined) ? props.content : ''
+    const content = (props.content !== undefined && props.content !== null) ? props.content : ''
 
     const contentBlock = htmlToDraft(content)
     if (contentBlock) {
