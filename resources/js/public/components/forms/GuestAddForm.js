@@ -35,10 +35,8 @@ class GuestAddForm extends Component {
       }
     }).then((response) => {
       if (response.status === 200) {
-        this.props.unmount()
         $('#modal-close').trigger('click')
-        $('.modal').hide()
-        $('.modal-overlay').hide()
+        this.props.unmount()
       }
     }).catch((error) => {
       if (error.response) {
@@ -95,7 +93,7 @@ class GuestAddForm extends Component {
             <div className='right-align'>
               <button id='modal-submit' type='submit' className='waves-effect waves-green btn'>Add</button>
               <div id='modal-loader' style={{ display: 'none' }} className='preloader-wrapper small active'><div className='spinner-layer spinner-green-only'><div className='circle-clipper left'><div className='circle'></div></div><div className='gap-patch'><div className='circle'></div></div><div className='circle-clipper right'><div className='circle'></div></div></div></div>
-              <button id='modal-close' className='modal-close' style={{ display: 'none' }} />
+              <button id='modal-close' type='button' className='modal-close' style={{ display: 'none' }} />
             </div>
           </div>
         </form>
