@@ -77,7 +77,7 @@ class HomePage extends Component {
     if (this.state && this.state.editing) {
       return (
         <div>
-          <RichTextEditor contentId='content' content={this.state.content} saveData={this.saveData} />
+          <RichTextEditor content={this.state.content} saveData={this.saveData} />
           { this.token &&
             <div>
               <div id='home-save-button' className='fixed-action-btn' onClick={this.savePage}>

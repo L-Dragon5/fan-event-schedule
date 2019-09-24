@@ -18,14 +18,10 @@ class UserController extends Controller
     public function login(Request $request) {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            $token = $user->createToken('FanEventScheduleToken')->accessToken;
-            $response = ['token' => $token];
 
-            return response()->json($response, $this->successStatus);
+            return return_json_message($user->createToken('FanEventScheduleToken')->accessToken, $this->successStatus);
         } else {
-            $response = ['message' => 'Incorrect login credentials provided'];
-
-            return response()->json($response, $this->errorStatus);
+            return return_json_message('Incorrect login credentials provided', $this->errorStatus);
         }
     }
 
@@ -40,14 +36,13 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()) {
-            return response()->json(['message' => $validator->errors()], $this->errorStatus);
+            return return_json_message($validator->errors(), $this->errorStatus);
         }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $response = ['token' => $user->createToken('FanEventScheduleToken')->accessToken];
 
-        return response()->json($response, $this->successStatus);
+        return return_json_message($user->createToken('FanEventScheduleToken')->accessToken, $this->successStatus);
     }
 }

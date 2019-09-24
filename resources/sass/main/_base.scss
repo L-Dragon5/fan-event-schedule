@@ -88,6 +88,15 @@ li.collection-item {
   margin-top: 1rem;
 }
 
+.rich-text-editor {
+  background-color: #fff;
+  padding: 0.625rem;
+
+  &-wrapper {
+    background-color: #fff;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

@@ -9,9 +9,13 @@ class RichTextEditor extends Component {
   constructor (props) {
     super(props)
 
-    this.contentId = props.contentId
+    this.state = {
+      editorState: ''
+    }
 
-    const contentBlock = htmlToDraft(props.content)
+    const content = (props.content !== undefined) ? props.content : ''
+
+    const contentBlock = htmlToDraft(content)
     if (contentBlock) {
       const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
       const editorState = EditorState.createWithContent(contentState)
@@ -27,7 +31,7 @@ class RichTextEditor extends Component {
 
   passData () {
     const data = {
-      [this.contentId]: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
+      content: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
     }
     this.props.saveData(JSON.stringify(data))
   }
@@ -57,8 +61,8 @@ class RichTextEditor extends Component {
     return (
       <Editor
         editorState={editorState}
-        wrapperClassName='wrapperClassName'
-        editorClassName='editorClassName'
+        wrapperClassName='rich-text-editor-wrapper'
+        editorClassName='rich-text-editor'
         onEditorStateChange={this.onEditorStateChange}
         toolbar={{
           image: { uploadCallback: this.imageCallback }

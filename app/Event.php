@@ -16,6 +16,7 @@ class Event extends Model
         'description',
         'is_cancelled'
     ];
+    public $timestamps = false;
 
     public function location() {
         return $this->hasOne('App\Location');

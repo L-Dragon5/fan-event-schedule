@@ -105,6 +105,21 @@ class PublicMain extends Component {
         })
       }
     })
+
+    window.addEventListener('DOMContentLoaded', this.handleInit)
+    if (document.readyState !== 'loading') {
+      this.handleInit()
+    }
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('DOMContentLoaded', this.handleInit)
+  }
+
+  handleInit () {
+    M.Sidenav.init($('.sidenav'))
+    M.Modal.init($('.modal'))
+    M.FloatingActionButton.init($('.fixed-action-btn'))
   }
 
   render () {
@@ -200,11 +215,11 @@ class PublicMain extends Component {
           { routeComponents }
         </main>
 
-        { this.state && !this.state.token &&
-          <Modal id='loginModal' button='Login'>
+        { (this.state.token === '') ? (
+          <Modal id='loginModal'>
             <LoginForm onTokenUpdate={this.onTokenUpdate} />
           </Modal>
-        }
+        ) : null }
       </HashRouter>
     )
   }
@@ -214,10 +229,4 @@ export default PublicMain
 
 if ($('#public-root').length) {
   ReactDOM.render(<PublicMain />, document.getElementById('public-root'))
-
-  $(function () {
-    M.Sidenav.init($('.sidenav'))
-    M.Modal.init($('.modal'))
-    M.FloatingActionButton.init($('.fixed-action-btn'))
-  })
 }

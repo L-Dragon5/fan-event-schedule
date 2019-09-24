@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Seller extends Model
 {
     protected $fillable = ['name', 'category', 'url'];
+    public $timestamps = false;
 }

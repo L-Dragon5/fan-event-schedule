@@ -1,23 +1,62 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import $ from 'jquery'
+import M from 'materialize-css'
+
+import Modal from '../components/Modal'
+import GuestAddForm from '../components/forms/GuestAddForm'
+import { runInThisContext } from 'vm'
 
 class GuestsPage extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      guest: [],
+      renderForm: true
+    }
+
     this.token = props.token
+
+    this.handleFormUnmount = this.handleFormUnmount.bind(this)
+    this.getGuestPageData = this.getGuestPageData.bind(this)
   }
 
   componentDidMount () {
-    // Get all guests
+    this.getGuestPageData()
+
+    window.addEventListener('DOMContentLoaded', this.handleInit)
+    if (document.readyState !== 'loading') {
+      this.handleInit()
+    }
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('DOMContentLoaded', this.handleInit)
+  }
+
+  handleInit () {
+    M.Modal.init($('.modal'))
+    M.FloatingActionButton.init($('.fixed-action-btn'))
+  }
+
+  getGuestPageData () {
     axios.get('/api/guests').then(response => {
       if (response.data != null) {
         this.setState({
-          guests: response.data
+          guests: response.data,
+          renderForm: true
         })
       }
     })
+  }
+
+  handleFormUnmount () {
+    this.setState({
+      renderForm: false
+    })
+
+    this.getGuestPageData()
   }
 
   render () {
@@ -49,10 +88,16 @@ class GuestsPage extends Component {
         }
 
         { this.token &&
-          <div className='fixed-action-btn'>
-            <a className='btn-floating btn-large red'>
-              <i className='large material-icons'>mode_edit</i>
-            </a>
+          <div>
+            <div id='guest-add-button' data-target='guestPageModal' className='fixed-action-btn modal-trigger'>
+              <a className='btn-floating btn-large red'>
+                <i className='large material-icons'>add</i>
+              </a>
+            </div>
+
+            <Modal id='guestPageModal'>
+              { this.state.renderForm ? <GuestAddForm token={this.token} unmount={this.handleFormUnmount} /> : null }
+            </Modal>
           </div>
         }
       </div>

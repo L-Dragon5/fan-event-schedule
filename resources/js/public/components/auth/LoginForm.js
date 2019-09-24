@@ -19,9 +19,7 @@ class LoginForm extends Component {
     $('#modal-loader').show()
     $('#modal-submit').hide()
 
-    const formData = new FormData()
-    formData.append('email', $('#email').val())
-    formData.append('password', $('#password').val())
+    const formData = new FormData(e.target)
 
     axios.post('/api/login', formData, {
       headers: {
@@ -30,10 +28,10 @@ class LoginForm extends Component {
       }
     }).then((response) => {
       if (response.status === 200) {
+        this.passToken(response.data.message)
         $('#modal-close').trigger('click')
-        setTimeout(() => {
-          this.passToken(response.data.token)
-        }, 300)
+        $('.modal').hide()
+        $('.modal-overlay').hide()
       }
     }).catch((error) => {
       if (error.response) {
@@ -52,11 +50,11 @@ class LoginForm extends Component {
           <div className='row'>
             <div className='modal-errors col s12' />
             <div className='input-field col s12'>
-              <input id='email' type='email' name='email' required />
+              <input id='email' type='email' name='email' className='validate' required />
               <label htmlFor='email'>Email</label>
             </div>
             <div className='input-field col s12'>
-              <input id='password' type='password' required />
+              <input id='password' type='password' name='password' className='validate' required />
               <label htmlFor='password'>Password</label>
             </div>
             <div className='right-align'>

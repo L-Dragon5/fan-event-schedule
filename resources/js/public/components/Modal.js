@@ -5,7 +5,6 @@ class Modal extends Component {
     super(props)
 
     this.id = props.id
-    this.button = props.button
   }
 
   render () {

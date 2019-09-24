@@ -37,6 +37,8 @@ Route::get('sellers', 'SellerController@index');
 Route::get('guests', 'GuestController@index');
 Route::get('guest/{id}', 'GuestController@view');
 Route::post('guest/create', 'GuestController@store')->middleware('auth:api');
+Route::post('guest/update/{id}', 'GuestController@update')->middleware('auth:api');
+Route::get('map/destroy/{id}', 'GuestController@destroy')->middleware('auth:api');
 
 // Events Routes
 Route::get('event/{id}', 'EventController@view');

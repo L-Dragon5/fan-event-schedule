@@ -40,7 +40,7 @@ class MapController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requst $request) {
+    public function store(Request $request) {
         $map = new Map;
         $map->title = $request->title;
         $map->image = $request->image;
@@ -62,9 +62,9 @@ class MapController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $home = Home::find(1);
-        $home->content = $request->content;
-        $success = $home->save();
+        $map = Map::find($id);
+        $map->name = $request->name;
+        $success = $map->save();
 
         if ($success) {
             return return_json_message('Updated succesfully', $this->successStatus);
