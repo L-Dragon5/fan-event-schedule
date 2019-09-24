@@ -43,6 +43,8 @@ Route::get('guest/destroy/{id}', 'GuestController@destroy')->middleware('auth:ap
 // Events Routes
 Route::get('event/{id}', 'EventController@view');
 Route::post('event/create', 'EventController@store')->middleware('auth:api');
+Route::post('event/update/{id}', 'EventController@update')->middleware('auth:api');
+Route::get('event/destroy/{id}', 'EventController@destroy')->middleware('auth:api');
 
 // Home Routes
 Route::get('home', 'HomeController@index');

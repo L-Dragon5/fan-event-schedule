@@ -11,7 +11,7 @@ class GuestsPage extends Component {
     super(props)
 
     this.state = {
-      guest: [],
+      guests: [],
       renderForm: true
     }
 

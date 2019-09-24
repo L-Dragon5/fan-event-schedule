@@ -4,16 +4,22 @@ import $ from 'jquery'
 
 import ScheduleGrid from '../components/schedule/grid/ScheduleGrid'
 import ScheduleList from '../components/schedule/list/ScheduleList'
+import Modal from '../components/Modal'
+import EventAddForm from '../components/forms/EventAddForm'
 
 class SchedulePage extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      scheduleStyle: (localStorage.getItem('scheduleStyle') !== null) ? localStorage.getItem('scheduleStyle') : 'grid'
+      scheduleStyle: (localStorage.getItem('scheduleStyle') !== null) ? localStorage.getItem('scheduleStyle') : 'grid',
+      renderForm: true
     }
 
+    this.token = props.token
+
     this.handleChange = this.handleChange.bind(this)
+    this.handleFormUnmount = this.handleFormUnmount.bind(this)
   }
 
   handleChange (e) {
@@ -37,6 +43,18 @@ class SchedulePage extends Component {
 
   handleInit () {
     M.FormSelect.init($('select'))
+    M.Modal.init($('.modal'))
+    M.FloatingActionButton.init($('.fixed-action-btn'))
+  }
+
+  handleFormUnmount () {
+    this.setState({
+      renderForm: false
+    })
+
+    this.setState({
+      renderForm: true
+    })
   }
 
   render () {
@@ -62,6 +80,20 @@ class SchedulePage extends Component {
         <div className='row'>
           {schedule}
         </div>
+
+        { this.token &&
+          <div>
+            <div id='event-add-button' data-target='eventPageModal' className='fixed-action-btn modal-trigger'>
+              <a className='btn-floating btn-large red'>
+                <i className='large material-icons'>add</i>
+              </a>
+            </div>
+
+            <Modal id='eventPageModal'>
+              { this.state.renderForm ? <EventAddForm token={this.token} unmount={this.handleFormUnmount} /> : null }
+            </Modal>
+          </div>
+        }
       </div>
     )
   }

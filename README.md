@@ -22,11 +22,7 @@ Using Google's Material Design to create a clean user interface, different from 
 
 ### Admin-Side
 - Pages
-  - Schedule
-    - Add Event
-    - Edit Event
-    - Remove Event
-    - Add/Edit/Remove Locations
+  - Add/Edit/Remove Locations
   - Exhibitors
     - Add Exhibitor
     - Edit Exhibitor
@@ -66,3 +62,7 @@ Using Google's Material Design to create a clean user interface, different from 
     - ~~Add Guest~~
     - ~~Edit Guest~~
     - ~~Remove Guest~~
+  - ~~Event~~
+    - ~~Add Event~~
+    - ~~Edit Event~~
+    - ~~Remove Event~~
