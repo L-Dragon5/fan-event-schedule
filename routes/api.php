@@ -30,8 +30,8 @@ Route::get('settings/social', 'SettingController@getSocial');
 // Rules Routes
 Route::get('rules', 'RuleController@index');
 
-// Sellers Routese
-Route::get('sellers', 'SellerController@index');
+// Exhibitors Routes
+Route::get('exhibitors', 'ExhibitorController@index');
 
 // Guests Routes
 Route::get('guests', 'GuestController@index');

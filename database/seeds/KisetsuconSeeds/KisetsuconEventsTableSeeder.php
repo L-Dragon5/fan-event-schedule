@@ -19,7 +19,7 @@ class KisetsuconEventsTableSeeder extends Seeder
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '10:00:00',
-            'time_end' => '10:50:00',
+            'time_end' => '10:30:00',
             'location_id' => '1',
         ]);
 
@@ -28,7 +28,7 @@ class KisetsuconEventsTableSeeder extends Seeder
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '11:00:00',
-            'time_end' => '11:50:00',
+            'time_end' => '12:00:00',
             'location_id' => '1',
         ]);
 
@@ -45,8 +45,8 @@ class KisetsuconEventsTableSeeder extends Seeder
             'title' => 'Asian Dance Showcase',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '15:00:00',
-            'time_end' => '16:20:00',
+            'time_start' => '14:30:00',
+            'time_end' => '16:00:00',
             'location_id' => '1',
         ]);
 
@@ -54,8 +54,8 @@ class KisetsuconEventsTableSeeder extends Seeder
             'title' => 'AniParty Set 2',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '18:00:00',
-            'time_end' => '18:50:00',
+            'time_start' => '16:30:00',
+            'time_end' => '17:30:00',
             'location_id' => '1',
         ]);
 
@@ -63,8 +63,17 @@ class KisetsuconEventsTableSeeder extends Seeder
             'title' => 'Cosplay Contest',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '19:00:00',
-            'time_end' => '19:50:00',
+            'time_start' => '18:30:00',
+            'time_end' => '19:30:00',
+            'location_id' => '1',
+        ]);
+
+        DB::table('events')->insert([
+            'title' => 'Cosplay Dating Game',
+            'event_types' => NULL,
+            'date' => '2019-10-13',
+            'time_start' => '20:00:00',
+            'time_end' => '22:00:00',
             'location_id' => '1',
         ]);
 
@@ -72,34 +81,25 @@ class KisetsuconEventsTableSeeder extends Seeder
         // Panel A = 2
         //
         DB::table('events')->insert([
-            'title' => 'Panel A1',
-            'event_types' => NULL,
-            'date' => '2019-10-13',
-            'time_start' => '10:30:00',
-            'time_end' => '11:20:00',
-            'location_id' => '2',
-        ]);
-
-        DB::table('events')->insert([
-            'title' => 'Panel A2',
+            'title' => 'Love Live Sunshine! Q&A',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '11:30:00',
-            'time_end' => '12:20:00',
+            'time_end' => '12:30:00',
             'location_id' => '2',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel A3',
+            'title' => 'CMV Showcase',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '12:30:00',
-            'time_end' => '13:20:00',
+            'time_end' => '13:30:00',
             'location_id' => '2',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Xanthe Workshop',
+            'title' => 'Xanthe\'s Workshop',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '13:30:00',
@@ -108,16 +108,16 @@ class KisetsuconEventsTableSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel A5',
+            'title' => 'Toonami Faithful Panel',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '15:00:00',
-            'time_end' => '15:50:00',
+            'time_end' => '16:00:00',
             'location_id' => '2',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'VA Guest Autographs',
+            'title' => 'VA Guest Autograph',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '16:30:00',
@@ -126,20 +126,20 @@ class KisetsuconEventsTableSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel A7',
+            'title' => 'Animated Storytelling',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '18:00:00',
-            'time_end' => '18:50:00',
+            'time_end' => '19:00:00',
             'location_id' => '2',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel A8',
+            'title' => 'Ball Jointed Dolls',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '19:30:00',
-            'time_end' => '19:50:00',
+            'time_end' => '20:00:00',
             'location_id' => '2',
         ]);
 
@@ -148,7 +148,7 @@ class KisetsuconEventsTableSeeder extends Seeder
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '20:00:00',
-            'time_end' => '20:50:00',
+            'time_end' => '21:00:00',
             'location_id' => '2',
         ]);
 
@@ -157,7 +157,7 @@ class KisetsuconEventsTableSeeder extends Seeder
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '21:00:00',
-            'time_end' => '21:50:00',
+            'time_end' => '22:00:00',
             'location_id' => '2',
         ]);
 
@@ -165,34 +165,43 @@ class KisetsuconEventsTableSeeder extends Seeder
         // Panel B = 3
         //
         DB::table('events')->insert([
-            'title' => 'Panel B1',
+            'title' => 'Intro to Wotagei',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '10:30:00',
-            'time_end' => '11:20:00',
+            'time_start' => '10:00:00',
+            'time_end' => '11:00:00',
             'location_id' => '3',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel B2',
+            'title' => 'Let\'s All Play a Death Game',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '12:30:00',
-            'time_end' => '13:20:00',
+            'time_start' => '11:00:00',
+            'time_end' => '12:30:00',
             'location_id' => '3',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel B3',
+            'title' => 'Quirky Bois (BNHA Q&A)',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '13:30:00',
+            'time_start' => '13:00:00',
             'time_end' => '14:00:00',
             'location_id' => '3',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'HikikoMuri Workshop',
+            'title' => 'Chaldea Idiots: Getting into Fate',
+            'event_types' => NULL,
+            'date' => '2019-10-13',
+            'time_start' => '14:00:00',
+            'time_end' => '14:30:00',
+            'location_id' => '3',
+        ]);
+
+        DB::table('events')->insert([
+            'title' => 'Machine Embroidery and Appliques',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '14:30:00',
@@ -201,7 +210,7 @@ class KisetsuconEventsTableSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel B5',
+            'title' => 'LGBTQ+ in Japanese Media',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '16:00:00',
@@ -210,29 +219,29 @@ class KisetsuconEventsTableSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Bunkie Workshop',
+            'title' => 'Painting Techniques and Color Theory',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '17:00:00',
-            'time_end' => '17:50:00',
+            'time_end' => '18:00:00',
             'location_id' => '3',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel B7',
+            'title' => 'Random Play Dance',
             'event_types' => NULL,
             'date' => '2019-10-13',
             'time_start' => '18:30:00',
-            'time_end' => '19:00:00',
+            'time_end' => '20:00:00',
             'location_id' => '3',
         ]);
 
         DB::table('events')->insert([
-            'title' => 'Panel B8',
+            'title' => 'Cursed Characters in Fandoms',
             'event_types' => NULL,
             'date' => '2019-10-13',
-            'time_start' => '20:00:00',
-            'time_end' => '22:00:00',
+            'time_start' => '20:30:00',
+            'time_end' => '21:30:00',
             'location_id' => '3',
         ]);
 

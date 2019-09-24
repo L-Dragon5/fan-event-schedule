@@ -13,7 +13,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import HomePage from './views/HomePage'
 import SchedulePage from './views/SchedulePage'
 import RulesPage from './views/RulesPage'
-import SellersPage from './views/SellersPage'
+import ExhibitorsPage from './views/ExhibitorsPage'
 import GuestsPage from './views/GuestsPage'
 import MapsPage from './views/MapsPage'
 
@@ -57,7 +57,7 @@ class PublicMain extends Component {
       },
       {
         path: '/exhibitors',
-        render: () => <SellersPage token={this.state.token} />
+        render: () => <ExhibitorsPage token={this.state.token} />
       },
       {
         path: '/guests',

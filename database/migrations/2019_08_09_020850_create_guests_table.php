@@ -17,7 +17,7 @@ class CreateGuestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->string('category', 255)->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('social_fb', 255)->nullable();
             $table->string('social_tw', 255)->nullable();
             $table->string('social_ig', 255)->nullable();

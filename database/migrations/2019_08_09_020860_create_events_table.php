@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
             $table->time('time_start');
             $table->time('time_end');
             $table->bigInteger('location_id')->unsigned();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->boolean('is_cancelled')->default(FALSE);
 
             $table->foreign('location_id')->references('id')->on('locations');
