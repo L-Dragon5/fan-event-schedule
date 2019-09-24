@@ -136,7 +136,7 @@ class EventEditForm extends Component {
             </div>
 
             <div className='input-field col s12'>
-              <RichTextEditor saveData={this.saveDescription} content={this.event.description} />
+              <RichTextEditor saveData={this.saveDescription} content={this.state.description} />
             </div>
 
             <div className='right-align'>

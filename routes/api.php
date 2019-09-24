@@ -22,6 +22,8 @@ Route::get('schedule/byTime/{location}', 'ScheduleController@byLocation');
 
 // Location Routes
 Route::get('locations', 'LocationController@index');
+Route::post('location/create', 'LocationController@store')->middleware('auth:api');
+Route::post('location/destroy/{id}', 'LocationController@destroy')->middleware('auth:api');
 
 // Setting Routes
 Route::get('setting/{key}', 'SettingController@getByKey');
@@ -29,9 +31,15 @@ Route::get('settings/social', 'SettingController@getSocial');
 
 // Rules Routes
 Route::get('rules', 'RuleController@index');
+Route::post('rule/create', 'RuleController@store')->middleware('auth:api');
+Route::post('rule/update/{id}', 'RuleController@update')->middleware('auth:api');
+Route::get('rule/destroy/{id}', 'RuleController@destroy')->middleware('auth:api');
 
 // Exhibitors Routes
 Route::get('exhibitors', 'ExhibitorController@index');
+Route::post('exhibitor/create', 'ExhibitorController@store')->middleware('auth:api');
+Route::post('exhibitor/update/{id}', 'ExhibitorController@update')->middleware('auth:api');
+Route::get('exhibitor/destroy/{id}', 'ExhibitorController@destroy')->middleware('auth:api');
 
 // Guests Routes
 Route::get('guests', 'GuestController@index');

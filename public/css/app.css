@@ -372,7 +372,7 @@ footer {
   font-size: 1rem;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   header,
   main,
   footer {
@@ -385,7 +385,7 @@ main {
   overflow: auto;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   main {
     height: 100vh;
   }
@@ -422,7 +422,7 @@ header > span {
   font-size: 1.25rem;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   header {
     display: none !important;
   }
@@ -437,7 +437,7 @@ li.collection-item {
 }
 
 li.collection-item > span {
-  display: block;
+  display: inline-block;
   padding: 10px 20px;
 }
 
@@ -486,13 +486,34 @@ li.collection-item > a:hover {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
 }
 
+li.collection-item > a > .collection-action-buttons {
+  position: relative;
+  top: -6px;
+}
+
+li.collection-item > .collection-action-buttons {
+  position: relative;
+  top: 10px;
+  right: -98px;
+}
+
+@media (min-width: 1200px) {
+  li.collection-item > .collection-action-buttons {
+    right: 28px;
+  }
+}
+
+.collapsible-action-button {
+  flex: 1 0 -1px;
+}
+
 .schedule-grid {
   background-color: #f2f2f2;
   overflow: auto;
   height: calc(100vh - 181px);
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   .schedule-grid {
     height: calc(100vh - 132px);
   }

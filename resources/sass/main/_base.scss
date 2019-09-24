@@ -63,7 +63,7 @@ li.collection-item {
   padding: 0 !important;
 
   & > span {
-    display: block;
+    display: inline-block;
     padding: 10px 20px;
   }
 
@@ -117,4 +117,25 @@ li.collection-item {
                           transparent 75%,
                           transparent)
   }
+}
+
+.collection-action-buttons {
+  li.collection-item > a > & {
+    position: relative;
+    top: -6px;
+  }
+
+  li.collection-item > & {
+    position: relative;
+    top: 10px;
+    right: -98px;
+
+    @include respond-above(lg) {
+      right: 28px;
+    }
+  }
+}
+
+.collapsible-action-button {
+  flex: 1 0 -1px;
 }

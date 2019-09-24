@@ -5,15 +5,15 @@ import M from 'materialize-css'
 
 import RichTextEditor from '../RichTextEditor'
 
-class GuestEditForm extends Component {
+class RuleEditForm extends Component {
   constructor (props) {
     super(props)
 
-    this.guest = props.guest
+    this.rule = props.rule
     this.token = props.token
 
     this.state = {
-      description: (this.guest.description !== '') ? this.guest.description : '<p></p>'
+      description: (this.rule.description !== '') ? this.rule.description : '<p></p>'
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -29,7 +29,7 @@ class GuestEditForm extends Component {
     const formData = new FormData(e.target)
     formData.append('description', this.state.description)
 
-    axios.post('/api/guest/update/' + this.guest.id, formData, {
+    axios.post('/api/rule/update/' + this.rule.id, formData, {
       headers: {
         Accept: 'application/json',
         Authorization: 'Bearer ' + this.token,
@@ -43,7 +43,11 @@ class GuestEditForm extends Component {
       }
     }).catch((error) => {
       if (error.response) {
-        $('.modal-errors').html(error.response.data.message).show()
+        var html = ''
+        for (const [key, value] of Object.entries(error.response.data.message)) {
+          html += key + ': ' + value + '<br>'
+        }
+        $('.modal-errors').html(html).show()
       }
     }).then(() => {
       $('#modal-loader').hide()
@@ -67,28 +71,10 @@ class GuestEditForm extends Component {
           <div className='row'>
             <div className='modal-errors col s12' />
 
-            <div className='input-field col s12 m6'>
-              <input id='name' type='text' name='name' className='validate' defaultValue={this.guest.name} required />
-              <label htmlFor='name'>Name</label>
+            <div className='input-field col s12'>
+              <input id='title' type='text' name='title' className='validate' defaultValue={this.rule.title} required />
+              <label htmlFor='title'>Title</label>
             </div>
-            <div className='input-field col s12 m6'>
-              <input id='category' type='text' name='category' className='validate' defaultValue={this.guest.category} />
-              <label htmlFor='category'>Category</label>
-            </div>
-
-            <div className='input-field col s12 m4'>
-              <input id='social_fb' type='url' name='social_fb' className='validate' defaultValue={this.guest.social_fb} />
-              <label htmlFor='social_fb'>Facebook</label>
-            </div>
-            <div className='input-field col s12 m4'>
-              <input id='social_tw' type='url' name='social_tw' className='validate' defaultValue={this.guest.social_tw} />
-              <label htmlFor='social_tw'>Twitter</label>
-            </div>
-            <div className='input-field col s12 m4'>
-              <input id='social_ig' type='url' name='social_ig' className='validate'defaultValue={this.guest.social_ig} />
-              <label htmlFor='social_ig'>Instagram</label>
-            </div>
-
             <div className='input-field col s12'>
               <RichTextEditor saveData={this.saveDescription} content={this.state.description} />
             </div>
@@ -105,4 +91,4 @@ class GuestEditForm extends Component {
   }
 }
 
-export default GuestEditForm
+export default RuleEditForm

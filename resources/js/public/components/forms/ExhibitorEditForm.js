@@ -3,21 +3,14 @@ import axios from 'axios'
 import $ from 'jquery'
 import M from 'materialize-css'
 
-import RichTextEditor from '../RichTextEditor'
-
-class GuestEditForm extends Component {
+class ExhibitorEditForm extends Component {
   constructor (props) {
     super(props)
 
-    this.guest = props.guest
+    this.exhibitor = props.exhibitor
     this.token = props.token
 
-    this.state = {
-      description: (this.guest.description !== '') ? this.guest.description : '<p></p>'
-    }
-
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.saveDescription = this.saveDescription.bind(this)
   }
 
   handleSubmit (e) {
@@ -27,9 +20,8 @@ class GuestEditForm extends Component {
     $('#modal-submit').hide()
 
     const formData = new FormData(e.target)
-    formData.append('description', this.state.description)
 
-    axios.post('/api/guest/update/' + this.guest.id, formData, {
+    axios.post('/api/exhibitor/update/' + this.exhibitor.id, formData, {
       headers: {
         Accept: 'application/json',
         Authorization: 'Bearer ' + this.token,
@@ -51,15 +43,6 @@ class GuestEditForm extends Component {
     })
   }
 
-  saveDescription (data) {
-    const obj = JSON.parse(data)
-    if (obj.content) {
-      this.setState({
-        description: obj.content
-      })
-    }
-  }
-
   render () {
     return (
       <div className='row'>
@@ -68,29 +51,16 @@ class GuestEditForm extends Component {
             <div className='modal-errors col s12' />
 
             <div className='input-field col s12 m6'>
-              <input id='name' type='text' name='name' className='validate' defaultValue={this.guest.name} required />
+              <input id='name' type='text' name='name' className='validate' defaultValue={this.exhibitor.name} required />
               <label htmlFor='name'>Name</label>
             </div>
             <div className='input-field col s12 m6'>
-              <input id='category' type='text' name='category' className='validate' defaultValue={this.guest.category} />
+              <input id='category' type='text' name='category' className='validate' defaultValue={this.exhibitor.category} />
               <label htmlFor='category'>Category</label>
             </div>
-
-            <div className='input-field col s12 m4'>
-              <input id='social_fb' type='url' name='social_fb' className='validate' defaultValue={this.guest.social_fb} />
-              <label htmlFor='social_fb'>Facebook</label>
-            </div>
-            <div className='input-field col s12 m4'>
-              <input id='social_tw' type='url' name='social_tw' className='validate' defaultValue={this.guest.social_tw} />
-              <label htmlFor='social_tw'>Twitter</label>
-            </div>
-            <div className='input-field col s12 m4'>
-              <input id='social_ig' type='url' name='social_ig' className='validate'defaultValue={this.guest.social_ig} />
-              <label htmlFor='social_ig'>Instagram</label>
-            </div>
-
             <div className='input-field col s12'>
-              <RichTextEditor saveData={this.saveDescription} content={this.state.description} />
+              <input id='url' type='url' name='url' className='validate' defaultValue={this.exhibitor.url} />
+              <label htmlFor='url'>URL</label>
             </div>
 
             <div className='right-align'>
@@ -105,4 +75,4 @@ class GuestEditForm extends Component {
   }
 }
 
-export default GuestEditForm
+export default ExhibitorEditForm

@@ -23,14 +23,6 @@ Using Google's Material Design to create a clean user interface, different from 
 ### Admin-Side
 - Pages
   - Add/Edit/Remove Locations
-  - Exhibitors
-    - Add Exhibitor
-    - Edit Exhibitor
-    - Remove Exhibitor
-  - Rules
-    - Add Rule
-    - Edit Rule
-    - Remove Rule
   - Maps
     - Add Map
     - Edit Map Name
@@ -66,3 +58,11 @@ Using Google's Material Design to create a clean user interface, different from 
     - ~~Add Event~~
     - ~~Edit Event~~
     - ~~Remove Event~~
+  -  ~~Exhibitors~~
+    - ~~Add Exhibitor~~
+    - ~~Edit Exhibitor~~
+    - ~~Remove Exhibitor~~
+  - ~~Rules~~
+    - ~~Add Rule~~
+    - ~~Edit Rule~~
+    - ~~Remove Rule~~
