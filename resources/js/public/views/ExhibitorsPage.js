@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import ExternalLink from '../components/ExternalLink'
+import $ from 'jquery'
+import M from 'materialize-css'
 
 class ExhibitorsPage extends Component {
   constructor (props) {
@@ -9,6 +11,9 @@ class ExhibitorsPage extends Component {
     this.state = {
       exhibitors: []
     }
+
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount () {
@@ -19,6 +24,17 @@ class ExhibitorsPage extends Component {
         })
       }
     })
+  }
+
+  handleEdit (exhibitor) {
+    console.log(exhibitor.id)
+    console.log(exhibitor.name)
+    console.log(exhibitor.url)
+    console.log(exhibitor.category)
+  }
+
+  handleDelete (exhibitor) {
+    console.log(exhibitor.id)
   }
 
   render () {
@@ -42,7 +58,17 @@ class ExhibitorsPage extends Component {
                     if (exhibitor.url != null) {
                       return (
                         <li key={exhibitor.id} className='collection-item'>
-                          <ExternalLink href={exhibitor.url}>{exhibitor.name}</ExternalLink>
+                          <ExternalLink href={exhibitor.url}>
+                            {exhibitor.name}
+                            <div className='right'>
+                              <button type='button' className='btn-small green' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleEdit(exhibitor) }}>
+                                <i className='material-icons'>mode_edit</i>
+                              </button>
+                              <button type='button' className='btn-small red' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleDelete(exhibitor) }}>
+                                <i className='material-icons'>delete</i>
+                              </button>
+                            </div>
+                          </ExternalLink>
                         </li>
                       )
                     } else {
