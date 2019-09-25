@@ -11,7 +11,7 @@ Styled using Google's Material Design via MaterializeCSS.
 * Composer
 * NodeJS
 
-## Ubuntu Installation with Nginx
+## Ubuntu 18.04 Installation with Nginx
 1. `apt-get update && apt-get upgrade`
 2. Instal NGINX
    1. `apt install nginx` & `systemctl enable nginx.service`
@@ -67,6 +67,8 @@ Styled using Google's Material Design via MaterializeCSS.
    * `php artisan passport:install`
 9. Create user account by sending register email and password to api url
    * Send `email`, `password`, `c_password` to `/api/register` via POST form-data
+   * ` curl -X POST -F 'email=<email>' -F 'password=<password>' -F 'c_password=<password>' http://localhost/api/register`
+
 
 ## To-Do
 
