@@ -1,4 +1,0 @@
-name: fan-event-schedule
-recipe: laravel
-config:
-  webroot: public

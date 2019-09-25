@@ -2,20 +2,33 @@
 Schedule application for fan events
 
 Built on Laravel REST API backend with a ReactJS frontend.
+Styled using Google's Material Design via MaterializeCSS.
 
-Using Google's Material Design to create a clean user interface, different from Bootstrap.
+## Requirements
+* MySQL/MariaDB Server
+* PHP >= 7.2.0
+* PHP Extensions: BCMath, Ctype, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML
+* Composer
+* NodeJS
 
 ## Installation
 1. Clone repository into folder
-2. Change `.env.example` file into `.env`
-3. Update entries within the `.env` file to match database and other information
-4. Generate a new key
+2. Install composer modules
+   * Development: `composer install`
+   * Production: `composer install --no-dev --optimize-autoloader`
+3. Install node modules
+   * `npm install`
+   * Development: `npm run dev` or `npm run watch`
+   * Production: `npm run prod`
+4. Change `.env.example` file into `.env`
+5. Update entries within the `.env` file to match database and other information
+6. Generate a new key
    * `php artisan key:generate`
-5. Create database tables
+7. Create database tables
    * `php artisan migrate`
-6. Generate encryption keys for API Auth
+8. Generate encryption keys for API Auth
    * `php artisan passport:install`
-7. Create user account by sending register email and password to api url
+9.  Create user account by sending register email and password to api url
    * Send `email`, `password`, `c_password` to `/api/register` via POST form-data
 
 ## To-Do

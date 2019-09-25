@@ -90,28 +90,30 @@ class RulesPage extends Component {
   }
 
   render () {
-    const exhibitors = this.state.exhibitors
+    const rules = this.state.rules
     const modalForm = this.state.modalForm
 
     return (
       <div>
         <h2 className='page-title'>Rules & Policies</h2>
         <ul className='collapsible'>
-          { this.state && this.state.rules &&
-            Object.entries(this.state.rules).map((entry, index) => {
+          { rules &&
+            Object.entries(rules).map((entry, index) => {
               const rule = entry[1]
               return (
                 <li key={rule.id}>
                   <div className='collapsible-header'>
                     <span style={{ flex: '1 0 auto', fontSize: '1.4rem' }}>{rule.title}</span>
-                    <div className='collapsible-action-buttons'>
-                      <button type='button' className='btn-small green modal-trigger' data-target='rulePageModal' onClick={(e) => { e.preventDefault(); this.handleEdit(rule) }}>
-                        <i className='material-icons'>mode_edit</i>
-                      </button>
-                      <button type='button' className='btn-small red' onClick={(e) => { e.preventDefault(); this.handleDelete(rule) }}>
-                        <i className='material-icons'>delete</i>
-                      </button>
-                    </div>
+                    { this.token &&
+                      <div className='collapsible-action-buttons'>
+                        <button type='button' className='btn-small green modal-trigger' data-target='rulePageModal' onClick={(e) => { e.preventDefault(); this.handleEdit(rule) }}>
+                          <i className='material-icons'>mode_edit</i>
+                        </button>
+                        <button type='button' className='btn-small red' onClick={(e) => { e.preventDefault(); this.handleDelete(rule) }}>
+                          <i className='material-icons'>delete</i>
+                        </button>
+                      </div>
+                    }
                   </div>
                   <div className='collapsible-body flow-text' dangerouslySetInnerHTML={{ __html: rule.description }} />
                 </li>

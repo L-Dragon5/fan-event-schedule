@@ -114,14 +114,16 @@ class ExhibitorsPage extends Component {
                         <li key={exhibitor.id} className='collection-item'>
                           <ExternalLink href={exhibitor.url}>
                             {exhibitor.name}
-                            <div className='right collection-action-buttons'>
-                              <button type='button' className='btn-small green modal-trigger' data-target='exhibitorPageModal' onClick={(e) => { e.preventDefault(); this.handleEdit(exhibitor) }}>
-                                <i className='material-icons'>mode_edit</i>
-                              </button>
-                              <button type='button' className='btn-small red' onClick={(e) => { e.preventDefault(); this.handleDelete(exhibitor) }}>
-                                <i className='material-icons'>delete</i>
-                              </button>
-                            </div>
+                            { this.token &&
+                              <div className='right collection-action-buttons'>
+                                <button type='button' className='btn-small green modal-trigger' data-target='exhibitorPageModal' onClick={(e) => { e.preventDefault(); this.handleEdit(exhibitor) }}>
+                                  <i className='material-icons'>mode_edit</i>
+                                </button>
+                                <button type='button' className='btn-small red' onClick={(e) => { e.preventDefault(); this.handleDelete(exhibitor) }}>
+                                  <i className='material-icons'>delete</i>
+                                </button>
+                              </div>
+                            }
                           </ExternalLink>
                         </li>
                       )
@@ -129,14 +131,16 @@ class ExhibitorsPage extends Component {
                       return (
                         <li key={exhibitor.id} className='collection-item'>
                           <span>{exhibitor.name}</span>
-                          <div className='right collection-action-buttons'>
-                            <button type='button' className='btn-small green modal-trigger' data-target='exhibitorPageModal' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleEdit(exhibitor) }}>
-                              <i className='material-icons'>mode_edit</i>
-                            </button>
-                            <button type='button' className='btn-small red' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleDelete(exhibitor) }}>
-                              <i className='material-icons'>delete</i>
-                            </button>
-                          </div>
+                          { this.token &&
+                            <div className='right collection-action-buttons'>
+                              <button type='button' className='btn-small green modal-trigger' data-target='exhibitorPageModal' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleEdit(exhibitor) }}>
+                                <i className='material-icons'>mode_edit</i>
+                              </button>
+                              <button type='button' className='btn-small red' style={{ position: 'relative', top: '-6px' }} onClick={(e) => { e.preventDefault(); this.handleDelete(exhibitor) }}>
+                                <i className='material-icons'>delete</i>
+                              </button>
+                            </div>
+                          }
                         </li>
                       )
                     }
