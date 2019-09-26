@@ -103,7 +103,7 @@ class EventEditForm extends Component {
             <div className='input-field col s12 m6'>
               { this.state && locations &&
                 <div>
-                  <select id='location_id' name='location_id' defaultValue={this.state.filterLocation} required>
+                  <select id='location_id' name='location_id' defaultValue={this.event.location_id} required>
                     <option value='' disabled>Choose a Location</option>
                     {
                       Object.entries(locations).map((k, index) => {
