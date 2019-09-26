@@ -33,11 +33,24 @@ class ScheduleGridEvent extends Component {
 
   handleInit () {
     M.Tooltip.init($('.tooltipped'))
+    this.resizeToFit()
   }
 
   handleClick () {
     this.setState({
       toSingle: true
+    })
+  }
+
+  resizeToFit () {
+    $('div.schedule-grid__event').each((index, element) => {
+      const spanElement = $(element).find('div.schedule-grid__event__title span')
+      const fontsize = spanElement.css('font-size')
+
+      if (spanElement.height() >= $(element).height()) {
+        spanElement.css('font-size', parseFloat(fontsize) - 1)
+        this.resizeToFit()
+      }
     })
   }
 
@@ -62,7 +75,8 @@ class ScheduleGridEvent extends Component {
       position: 'absolute',
       height: itemHeight + 'px',
       width: '150px',
-      top: startLoc + 'px'
+      top: startLoc + 'px',
+      fontSize: '1.125rem'
     }
 
     const timeRange = '' + moment(this.event.time_start, 'HH:mm:ss').format('hh:mmA') + ' - ' + moment(this.event.time_end, 'HH:mm:ss').format('hh:mmA')

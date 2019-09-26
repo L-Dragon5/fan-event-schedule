@@ -437,7 +437,7 @@ li.collection-item {
 }
 
 li.collection-item > span {
-  display: inline-block;
+  display: block;
   padding: 10px 20px;
 }
 
@@ -459,6 +459,28 @@ li.collection-item > a:hover {
 
 .divider {
   margin-top: 1rem;
+}
+
+.collapsible-header i {
+  width: inherit;
+  margin-right: 0;
+}
+
+.collapsible-body {
+  padding: 0.75rem 1.5rem;
+}
+
+.collapsible-body p {
+  margin: 0.75rem 0;
+}
+
+.collapsible-body ul {
+  padding-left: 3rem;
+  list-style-type: circle;
+}
+
+.collapsible-body ul > li {
+  list-style-type: circle;
 }
 
 .rich-text-editor {
@@ -629,7 +651,7 @@ li.collection-item > .collection-action-buttons {
 }
 
 .schedule-list__item__time {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-style: italic;
   padding-top: 0 !important;
 }
