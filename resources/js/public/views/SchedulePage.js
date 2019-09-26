@@ -6,14 +6,22 @@ import ScheduleGrid from '../components/schedule/grid/ScheduleGrid'
 import ScheduleList from '../components/schedule/list/ScheduleList'
 import Modal from '../components/Modal'
 import EventAddForm from '../components/forms/EventAddForm'
+import Helper from '../components/Helper'
 
 class SchedulePage extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      scheduleStyle: (localStorage.getItem('scheduleStyle') !== null) ? localStorage.getItem('scheduleStyle') : 'grid',
-      renderForm: true
+    if (Helper.checkLocalStorage()) {
+      this.state = {
+        scheduleStyle: (localStorage.getItem('scheduleStyle') !== null) ? localStorage.getItem('scheduleStyle') : 'grid',
+        renderForm: true
+      }
+    } else {
+      this.state = {
+        scheduleStyle: 'grid',
+        renderForm: true
+      }
     }
 
     this.token = props.token
@@ -27,7 +35,9 @@ class SchedulePage extends Component {
       scheduleStyle: e.target.value
     })
 
-    localStorage.setItem('scheduleStyle', e.target.value)
+    if (Helper.checkLocalStorage()) {
+      localStorage.setItem('scheduleStyle', e.target.value)
+    }
   }
 
   componentDidMount () {

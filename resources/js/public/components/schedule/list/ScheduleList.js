@@ -4,17 +4,28 @@ import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import M from 'materialize-css'
 import $ from 'jquery'
+import Helper from '../../Helper'
 
 class ScheduleList extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      schedule: [],
-      locations: [],
-      toSingle: false,
-      eventId: null,
-      filterLocation: (sessionStorage.getItem('filterLocation') !== null) ? sessionStorage.getItem('filterLocation') : 'all'
+    if (Helper.checkSessionStorage()) {
+      this.state = {
+        schedule: [],
+        locations: [],
+        toSingle: false,
+        eventId: null,
+        filterLocation: (sessionStorage.getItem('filterLocation') !== null) ? sessionStorage.getItem('filterLocation') : 'all'
+      }
+    } else {
+      this.state = {
+        schedule: [],
+        locations: [],
+        toSingle: false,
+        eventId: null,
+        filterLocation: 'all'
+      }
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -69,7 +80,9 @@ class ScheduleList extends Component {
       })
     })
 
-    sessionStorage.setItem('filterLocation', e.target.value)
+    if (Helper.checkSessionStorage()) {
+      sessionStorage.setItem('filterLocation', e.target.value)
+    }
   }
 
   render () {

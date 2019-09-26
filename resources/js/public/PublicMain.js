@@ -25,19 +25,32 @@ import SingleGuest from './views/single/SingleGuest'
 import ExternalLink from './components/ExternalLink'
 import Modal from './components/Modal'
 import LoginForm from './components/auth/LoginForm'
+import Helper from './components/Helper'
 
 library.add(fab, faShareSquare)
 
 class PublicMain extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      registrationLink: '',
-      socialFB: '',
-      socialTW: '',
-      socialIG: '',
-      socialWeb: '',
-      token: (sessionStorage.getItem('token')) ? sessionStorage.getItem('token') : ''
+
+    if (Helper.checkSessionStorage()) {
+      this.state = {
+        registrationLink: '',
+        socialFB: '',
+        socialTW: '',
+        socialIG: '',
+        socialWeb: '',
+        token: (sessionStorage.getItem('token')) ? sessionStorage.getItem('token') : ''
+      }
+    } else {
+      this.state = {
+        registrationLink: '',
+        socialFB: '',
+        socialTW: '',
+        socialIG: '',
+        socialWeb: '',
+        token: ''
+      }
     }
 
     this.onTokenUpdate = this.onTokenUpdate.bind(this)
@@ -82,8 +95,10 @@ class PublicMain extends Component {
     this.setState({
       token: data
     })
-
-    sessionStorage.setItem('token', data)
+    
+    if (Helper.checkSessionStorage()) {
+      sessionStorage.setItem('token', data)
+    }
   }
 
   componentDidMount () {
