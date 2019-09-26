@@ -6,11 +6,8 @@ class Helper extends Component {
     try {
       localStorage.setItem(test, test)
       localStorage.removeItem(test)
-
-      console.log('localstorage works')
       return true
     } catch (e) {
-      console.log('localstorage does not work')
       return false
     }
   }

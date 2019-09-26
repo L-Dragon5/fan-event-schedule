@@ -15,7 +15,7 @@ class EventEditForm extends Component {
     this.state = {
       locations: [],
       description: (this.event.description !== '') ? this.event.description : '<p></p>',
-      location_id: ''
+      location_id: (this.event.location_id !== '') ? this.event.location_id : 1
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
