@@ -14,10 +14,12 @@ class EventEditForm extends Component {
 
     this.state = {
       locations: [],
-      description: (this.event.description !== '') ? this.event.description : '<p></p>'
+      description: (this.event.description !== '') ? this.event.description : '<p></p>',
+      location_id: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.saveDescription = this.saveDescription.bind(this)
   }
 
@@ -51,6 +53,7 @@ class EventEditForm extends Component {
       formData.set('time_end', timeEnd + ':00')
     }
     formData.append('description', this.state.description)
+    formData.set('location_id', this.state.location_id)
 
     axios.post('/api/event/update/' + this.event.id, formData, {
       headers: {
@@ -75,6 +78,12 @@ class EventEditForm extends Component {
     }).then(() => {
       $('#modal-loader').hide()
       $('#modal-submit').show()
+    })
+  }
+
+  handleChange (e) {
+    this.setState({
+      location_id: e.target.value
     })
   }
 
@@ -103,7 +112,7 @@ class EventEditForm extends Component {
             <div className='input-field col s12 m6'>
               { this.state && locations &&
                 <div>
-                  <select id='location_id' name='location_id' defaultValue={this.event.location_id} required>
+                  <select id='location_id' name='location_id' value={this.event.location_id} onChange={this.handleChange} required>
                     <option value='' disabled>Choose a Location</option>
                     {
                       Object.entries(locations).map((k, index) => {
