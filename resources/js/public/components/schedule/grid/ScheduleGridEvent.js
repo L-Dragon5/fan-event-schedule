@@ -89,7 +89,7 @@ class ScheduleGridEvent extends Component {
         data-position='top'
         data-tooltip={timeRange}>
         <div className='schedule-grid__event__title'>
-          <span>{this.event.title}</span>
+          <span style={{ textDecoration: (this.event.is_cancelled) ? 'line-through' : 'none' }}>{this.event.title}</span>
         </div>
       </div>
     )

@@ -26,7 +26,8 @@ class HomePage extends Component {
     axios.get('/api/home').then(response => {
       if (response.data != null) {
         this.setState({
-          content: response.data
+          content: response.data,
+          saveData: response.data
         })
       }
     })

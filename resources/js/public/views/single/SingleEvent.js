@@ -120,6 +120,9 @@ class SingleEvent extends Component {
           </div>
           <div className='event__location center-align'><strong>Location:</strong> {event.location}</div>
           <div className='divider' />
+          { event.is_cancelled
+            ? <div className='center-align' style={{ color: 'red' }}><h2>EVENT CANCELLED</h2></div>
+            : '' }
           <div className='event__description flow-text' dangerouslySetInnerHTML={{ __html: event.description }} />
 
           {/* event.event_type_names */}

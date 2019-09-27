@@ -99,6 +99,7 @@ class EventController extends Controller
             'time_end' => 'date_format:H:i:s|after:time_start|required',
             'location_id' => 'numeric|required',
             'description' => 'string|nullable',
+            'is_cancelled' => 'boolean'
         ]);
 
         if($validator->fails()) {
@@ -113,6 +114,7 @@ class EventController extends Controller
             $event->time_end = $request->time_end;
             $event->location_id = $request->location_id;
             $event->description = $request->description;
+            $event->is_cancelled = $request->is_cancelled;
             $success = $event->save();
 
             if ($success) {

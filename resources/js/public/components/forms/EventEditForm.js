@@ -54,6 +54,13 @@ class EventEditForm extends Component {
     }
     formData.append('description', this.state.description)
     formData.set('location_id', this.state.location_id)
+    
+    const isCancelled = formData.get('is_cancelled')
+    if (isCancelled === 'on') {
+      formData.set('is_cancelled', 1)
+    } else {
+      formData.set('is_cancelled', 0)
+    }
 
     axios.post('/api/event/update/' + this.event.id, formData, {
       headers: {
@@ -142,6 +149,18 @@ class EventEditForm extends Component {
             <div className='input-field col s12 m4'>
               <input id='time_end' type='time' name='time_end' className='validate' defaultValue={this.event.time_end} required />
               <label htmlFor='time_end'>End Time</label>
+            </div>
+
+            <div className='input-field col s12' style={{ margin: '0 auto' }}>
+              <p style={{ margin: '0' }}>
+                <label>
+                  { this.event.is_cancelled
+                    ? <input id='is_cancelled' type='checkbox' name='is_cancelled' defaultChecked='checked' />
+                    : <input id='is_cancelled' type='checkbox' name='is_cancelled' />
+                  }
+                  <span>Is Cancelled?</span>
+                </label>
+              </p>
             </div>
 
             <div className='input-field col s12'>

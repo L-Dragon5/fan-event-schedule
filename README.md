@@ -96,16 +96,14 @@ Provides login functionality for admins to add, edit, delete content.
 - Setup Exhibitor Types
 - Setup Guest Types
 - Setup Settings configuration
+- Setup Locations configuration
 
 ### Admin-Side
 - Pages
-  - Add/Edit/Remove Locations
   - Maps
     - Add Map
     - Edit Map Name
     - Remove Map
-  - Event
-    - Add isCancelled Checkbox
 
 ### Public-Side
 - My Schedule

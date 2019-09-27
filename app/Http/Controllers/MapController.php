@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Map;
+use Validator;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
@@ -41,6 +42,15 @@ class MapController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'title' => 'string|required',
+            'image' => 'string|nullable',
+        ]);
+
+        if($validator->fails()) {
+            return return_json_message($validator->errors(), $this->errorStatus);
+        }
+
         $map = new Map;
         $map->title = $request->title;
         $map->image = $request->image;
@@ -62,8 +72,16 @@ class MapController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'string|required',
+        ]);
+
+        if($validator->fails()) {
+            return return_json_message($validator->errors(), $this->errorStatus);
+        }
+
         $map = Map::find($id);
-        $map->name = $request->name;
+        $map->title = $request->title;
         $success = $map->save();
 
         if ($success) {
