@@ -147,25 +147,25 @@ class PublicMain extends Component {
         <ul id='sidebar' className='sidenav sidenav-fixed'>
           <li>
             <div className='user-view'>
-              <span style={{ fontSize: '1.375rem' }}>{process.env.MIX_EVENT_NAME}</span>
+              <span className='sidenav__title'>{process.env.MIX_EVENT_NAME}</span>
               <div>
                 { this.state && this.state.socialFB &&
-                  <ExternalLink href={this.state.socialFB} icon>
+                  <ExternalLink className='external-link__icon' href={this.state.socialFB}>
                     <FontAwesomeIcon icon={['fab', 'facebook-square']} />
                   </ExternalLink>
                 }
                 { this.state && this.state.socialTW &&
-                  <ExternalLink href={this.state.socialTW} icon>
+                  <ExternalLink className='external-link__icon' href={this.state.socialTW}>
                     <FontAwesomeIcon icon={['fab', 'twitter-square']} />
                   </ExternalLink>
                 }
                 { this.state && this.state.socialIG &&
-                  <ExternalLink href={this.state.socialIG} icon>
+                  <ExternalLink className='external-link__icon' href={this.state.socialIG}>
                     <FontAwesomeIcon icon={['fab', 'instagram']} />
                   </ExternalLink>
                 }
                 { this.state && this.state.socialWeb &&
-                  <ExternalLink href={this.state.socialWeb} icon className='right'>
+                  <ExternalLink className='right external-link__icon' href={this.state.socialWeb}>
                     <FontAwesomeIcon icon='share-square' />
                   </ExternalLink>
                 }

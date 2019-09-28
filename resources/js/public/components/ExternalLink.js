@@ -6,22 +6,14 @@ class ExternalLink extends Component {
 
     this.href = props.href
     this.className = props.className
-    this.style = {
-      color: 'rgba(0,0,0,0.87)',
-      marginRight: '0.5rem'
-    }
-
-    if (props.icon) {
-      this.style.fontSize = '1.75rem'
-      this.style.color = 'rgba(0,0,0,0.65)'
-    }
+    this.style = props.style
   }
 
   render () {
     return (
       <a
         href={this.href}
-        className={this.className}
+        className={'external-link ' + this.className}
         style={this.style}
         rel='noopener noreferrer'
         target='_blank'>
