@@ -90,22 +90,13 @@ Provides login functionality for admins to add, edit, delete content.
 
 ## To-Do
 
-### Backend
+### Additional Items
 - Setup Redis cache
 - Setup Event Types
 - Setup Exhibitor Types
 - Setup Guest Types
 - Setup Settings configuration
 - Setup Locations configuration
-
-### Admin-Side
-- Pages
-  - Maps
-    - Add Map
-    - Edit Map Name
-    - Remove Map
-
-### Public-Side
-- My Schedule
+- - My Schedule
   - Ability to add events to personal schedule
     - Probably use localStorage to store

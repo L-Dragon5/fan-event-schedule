@@ -32,7 +32,7 @@ class MapController extends Controller
     public function view(Request $request, $id) {
         $map = Map::find($id);
 
-        return $map->image;
+        return $map;
     }
 
     /**
@@ -44,7 +44,7 @@ class MapController extends Controller
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'title' => 'string|required',
-            'image' => 'string|nullable',
+            'image' => 'image|nullable',
         ]);
 
         if($validator->fails()) {
@@ -53,7 +53,13 @@ class MapController extends Controller
 
         $map = new Map;
         $map->title = $request->title;
-        $map->image = $request->image;
+
+        $image = file_get_contents($request->image);
+        $image_data = base64_encode($image);
+        
+        $final_img = 'data:image/' . $request->image->extension() . ';base64,' . $image_data;
+
+        $map->image = $final_img;
         $success = $map->save();
 
         if ($success) {
