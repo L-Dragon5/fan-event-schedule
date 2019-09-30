@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga'
 import axios from 'axios'
 import React, { Component } from 'react'
 import M from 'materialize-css'
@@ -28,6 +29,11 @@ import LoginForm from './components/auth/LoginForm'
 import Helper from './components/Helper'
 
 library.add(fab, faShareSquare)
+
+// Google Analytics
+if (process.env.MIX_ANALYTICS_ID !== null && process.env.MIX_ANALYTICS_ID !== '') {
+  ReactGA.initialize(process.env.MIX_ANALYTICS_ID)
+}
 
 class PublicMain extends Component {
   constructor (props) {
