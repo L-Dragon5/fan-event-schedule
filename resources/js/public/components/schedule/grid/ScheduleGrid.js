@@ -35,7 +35,7 @@ class ScheduleGrid extends Component {
 
     $('#grid').on('scroll', this.moveLabels)
     setTimeout(() => {
-      $('.schedule-grid__label > span:first-of-type').each((index, element) => {
+      $('.schedule-grid__label > span').each((index, element) => {
         $(element).data('initialLeft', parseFloat($(element).css('left')))
       })
     })
@@ -54,7 +54,7 @@ class ScheduleGrid extends Component {
     const scrollTopAmt = $('#grid').scrollTop()
 
     $('#labels-bg').css('left', scrollLeftAmt)
-    $('.schedule-grid__label > span:first-of-type').each((index, element) => {
+    $('.schedule-grid__label > span').each((index, element) => {
       $(element).css('left', $(element).data('initialLeft') + scrollLeftAmt)
     })
     $('.schedule-grid__grid__item__header').css('top', scrollTopAmt)
@@ -78,19 +78,70 @@ class ScheduleGrid extends Component {
             <div id='labels-bg' style={{ flex: 'none', position: 'absolute', height: '100%', width: '62px', zIndex: '4', backgroundColor: '#f2f2f2' }} />
             <div className='schedule-grid__labels'>
               <div className='schedule-grid__label' />
-              <div className='schedule-grid__label'><span>10AM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>11AM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>12PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>1PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>2PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>3PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>4PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>5PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>6PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>7PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>8PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>9PM</span><span className='schedule-grid__label__line' /></div>
-              <div className='schedule-grid__label'><span>10PM</span><span className='schedule-grid__label__line' /></div>
+              <div className='schedule-grid__label'>
+                <span>10AM</span>
+                <span>10:30AM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>11AM</span>
+                <span>11:30AM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>12PM</span>
+                <span>12:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>1PM</span>
+                <span>1:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>2PM</span>
+                <span>2:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>3PM</span>
+                <span>3:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>4PM</span>
+                <span>4:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>5PM</span>
+                <span>5:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>6PM</span>
+                <span>6:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>7PM</span>
+                <span>7:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>8PM</span>
+                <span>8:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>9PM</span>
+                <span>9:30PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
+              <div className='schedule-grid__label'>
+                <span>10PM</span>
+                <div className='schedule-grid__label__line' />
+              </div>
             </div>
             <div className='schedule-grid__grid'>
               { this.state && this.state.eventStartTime && schedule

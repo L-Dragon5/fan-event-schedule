@@ -48,6 +48,9 @@ class ScheduleController extends Controller
         $return = [];
         $events = Event::all()->sortBy('time_start');
         foreach($events as $event) {
+            $loc = Location::find($event->location_id);
+            $event->location = $loc->name;
+
             $return[] = $event;
         }
 

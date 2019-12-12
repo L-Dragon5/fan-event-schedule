@@ -29,6 +29,10 @@
       &:first-of-type {
         height: 65px;
       }
+
+      &:last-of-type {
+        height: 0;
+      }
   
       & > span:first-of-type {
         position: absolute;
@@ -36,6 +40,14 @@
         top: -0.625rem;
         z-index: 5;
         font-weight: 600;
+      }
+
+      & > span:nth-of-type(2) {
+        position: absolute;
+        right: 0.3125rem;
+        top: 2.275rem;
+        z-index: 5;
+        font-size: 0.8rem;
       }
   
       &__line {
@@ -115,6 +127,12 @@
       &__title {
         font-size: 1.5rem;
         line-height: 1.625rem;
+        font-weight: bold;
+      }
+
+      &__location {
+        font-size: 1.2rem;
+        padding: 0 20px!important;
       }
   
       &__time {

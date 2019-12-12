@@ -124,6 +124,7 @@ class ScheduleList extends Component {
               return (
                 <li className='collection-item schedule-list__item' key={index} onClick={() => this.handleClick(event.id)}>
                   <span className='schedule-list__item__title' style={{ textDecoration: (event.is_cancelled) ? 'line-through' : 'none' }}>{event.title}</span>
+                  <span className='schedule-list__item__location' style={{ textDecoration: (event.is_cancelled) ? 'line-through' : 'none' }}>{event.location}</span>
                   <span className='schedule-list__item__time' style={{ textDecoration: (event.is_cancelled) ? 'line-through' : 'none' }}>
                     {moment(event.time_start, 'HH:mm:ss').format('hh:mmA')} - {moment(event.time_end, 'HH:mm:ss').format('hh:mmA')}
                   </span>

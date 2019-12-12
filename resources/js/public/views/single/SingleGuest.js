@@ -117,17 +117,17 @@ class SingleGuest extends Component {
           <div className='guest__category center-align'><strong>Category:</strong> {guest.category}</div>
           <div className='guest__social-media center-align'>
             { guest.social_fb &&
-              <ExternalLink href={guest.social_fb} icon>
+              <ExternalLink href={guest.social_fb} className='external-link__icon'>
                 <FontAwesomeIcon icon={['fab', 'facebook-square']} />
               </ExternalLink>
             }
             { guest.social_tw &&
-              <ExternalLink href={guest.social_tw} icon>
+              <ExternalLink href={guest.social_tw} className='external-link__icon'>
                 <FontAwesomeIcon icon={['fab', 'twitter-square']} />
               </ExternalLink>
             }
             { guest.social_ig &&
-              <ExternalLink href={guest.social_ig} icon>
+              <ExternalLink href={guest.social_ig} className='external-link__icon'>
                 <FontAwesomeIcon icon={['fab', 'instagram']} />
               </ExternalLink>
             }
